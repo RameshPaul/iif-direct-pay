@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="subscriptionPlan">
+      <h2 data-cy="subscriptionPlanDetailsHeading">
+        <span jhiTranslate="iifDirectPayApp.subscriptionPlan.detail.title">Subscription Plan</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ subscriptionPlan.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.subscriptionName">Subscription Name</span></dt>
+        <dd>
+          <span>{{ subscriptionPlan.subscriptionName }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.subscriptionTitle">Subscription Title</span></dt>
+        <dd>
+          <span>{{ subscriptionPlan.subscriptionTitle }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.subscriptionType">Subscription Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.SubscriptionType.' + subscriptionPlan.subscriptionType }}">{{
+            subscriptionPlan.subscriptionType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.subscriptionPrice">Subscription Price</span></dt>
+        <dd>
+          <span>{{ subscriptionPlan.subscriptionPrice }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.subscriptionQuantity">Subscription Quantity</span></dt>
+        <dd>
+          <span>{{ subscriptionPlan.subscriptionQuantity }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.subscriptionPeriod">Subscription Period</span></dt>
+        <dd>
+          <span>{{ subscriptionPlan.subscriptionPeriod }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.subscriptionTerms">Subscription Terms</span></dt>
+        <dd>
+          <span>{{ subscriptionPlan.subscriptionTerms }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.SubscriptionStatus.' + subscriptionPlan.status }}">{{ subscriptionPlan.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ subscriptionPlan.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.subscriptionPlan.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ subscriptionPlan.updatedDate | formatMediumDatetime }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/subscription-plan', subscriptionPlan.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429145948",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "patron",
+  "fields": [
+    {
+      "fieldName": "isRecurring",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "recurringType",
+      "fieldType": "ReceipientPatronRecurringType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "WEEKLY,MONTHLY,QUARTERLY,HALF_YEARLY,YEARLY,ONE_TIME"
+    },
+    {
+      "fieldName": "recurringPeriod",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "enableReminder",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "isAutoPay",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "amountReceipientRequisite",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "amountPatronPledge",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "amountPatronActual",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ReceipientPatronStatus",
+      "fieldValues": "INACTIVE,ACTIVE,SUSPENDED,DELETED,CLOSED"
+    },
+    {
+      "fieldName": "commitedStartDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "commitedEndDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "actualStartDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "actualEndDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "reccuringPauseDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "recurringResumeDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "recurringPauseReason",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "deletedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Patron",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "patron",
+      "relationshipName": "patronUserId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "patron",
+      "relationshipName": "patronUserOrgId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "receipient",
+      "otherEntityRelationshipName": "patron",
+      "relationshipName": "receipientId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "patron",
+      "relationshipName": "receipientUserId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "patron",
+      "relationshipName": "receipientUserOrgId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

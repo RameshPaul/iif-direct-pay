@@ -1,0 +1,100 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429145941",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "organization_subscription_plan",
+  "fields": [
+    {
+      "fieldName": "subscriptionName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionTitle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionType",
+      "fieldType": "SubscriptionType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "FREE,PAID,PROMOTION,OTHER"
+    },
+    {
+      "fieldName": "subscriptionPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionQuantity",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionPeriod",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionTerms",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "couponCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "suspendedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "deletedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "SubscriptionStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,SUSPENDED,DELETED"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "OrganizationSubscriptionPlan",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "organizationSubscriptionPlan",
+      "relationshipName": "organizationId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "subscriptionPlan",
+      "otherEntityRelationshipName": "organizationSubscriptionPlan",
+      "relationshipName": "subscriptionId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

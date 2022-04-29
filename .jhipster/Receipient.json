@@ -1,0 +1,158 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429145946",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "receipient",
+  "fields": [
+    {
+      "fieldName": "isRecurring",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "recurringType",
+      "fieldType": "ReceipientPatronRecurringType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "WEEKLY,MONTHLY,QUARTERLY,HALF_YEARLY,YEARLY,ONE_TIME"
+    },
+    {
+      "fieldName": "recurringStartDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "recurringEndDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "enableReminder",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "isAutoPay",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "amountRequisite",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ReceipientPatronStatus",
+      "fieldValues": "INACTIVE,ACTIVE,SUSPENDED,DELETED,CLOSED"
+    },
+    {
+      "fieldName": "isManagedByOrg",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "approvedDateTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "rejectedDateTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "rejectReason",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "onboardedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "reccuringPauseDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "recurringResumeDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "recurringPauseReason",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "deletedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Receipient",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "receipient",
+      "relationshipName": "userId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "receipient",
+      "relationshipName": "organizationId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "receipient",
+      "relationshipName": "managedOrganiztionId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "receipient",
+      "relationshipName": "createdUserId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "receipient",
+      "relationshipName": "createdUserOrgId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "receipient",
+      "relationshipName": "approvedUserId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "receipient",
+      "relationshipName": "approvedUserOrgId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "receipient",
+      "relationshipName": "rejectedUserId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "receipient",
+      "relationshipName": "rejectedUserOrgId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
