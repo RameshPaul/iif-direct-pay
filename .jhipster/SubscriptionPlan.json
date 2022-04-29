@@ -1,0 +1,65 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429144655",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "subscription_plan",
+  "fields": [
+    {
+      "fieldName": "subscriptionName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionTitle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionType",
+      "fieldType": "SubscriptionType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "FREE,PAID,PROMOTION,OTHER"
+    },
+    {
+      "fieldName": "subscriptionPrice",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionQuantity",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionPeriod",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "subscriptionTerms",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "SubscriptionStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,SUSPENDED,DELETED"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "SubscriptionPlan",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Payment.
+    -->
+    <changeSet id="20220429144705-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="patron_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__patron_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="patron"/>
+
+        <addForeignKeyConstraint baseColumnNames="patron_user_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__patron_user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="patron_user_org_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__patron_user_org_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+        <addForeignKeyConstraint baseColumnNames="receipient_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__receipient_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="receipient"/>
+
+        <addForeignKeyConstraint baseColumnNames="receipient_user_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__receipient_user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="receipient_user_org_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__receipient_user_org_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+        <addForeignKeyConstraint baseColumnNames="payment_source_account_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__payment_source_account_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_account"/>
+
+        <addForeignKeyConstraint baseColumnNames="payment_destination_account_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__payment_destination_account_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="user_account"/>
+
+        <addForeignKeyConstraint baseColumnNames="flagged_user_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__flagged_user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="flagged_user_org_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__flagged_user_org_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+        <addForeignKeyConstraint baseColumnNames="flag_cleared_user_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__flag_cleared_user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="flag_cleared_user_org_id_id"
+                                 baseTableName="payment"
+                                 constraintName="fk_payment__flag_cleared_user_org_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,39 @@
+{
+  "iifDirectPayApp": {
+    "receipientRecurring": {
+      "home": {
+        "title": "Receipient Recurrings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Receipient Recurring",
+        "createOrEditLabel": "Create or edit a Receipient Recurring",
+        "notFound": "No Receipient Recurrings found"
+      },
+      "created": "A new Receipient Recurring is created with identifier {{ param }}",
+      "updated": "A Receipient Recurring is updated with identifier {{ param }}",
+      "deleted": "A Receipient Recurring is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Receipient Recurring {{ id }}?"
+      },
+      "detail": {
+        "title": "Receipient Recurring"
+      },
+      "id": "ID",
+      "recurringPeriod": "Recurring Period",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "amountRequisite": "Amount Requisite",
+      "amountPatronCommited": "Amount Patron Commited",
+      "amountReceived": "Amount Received",
+      "amountBalance": "Amount Balance",
+      "totalPatrons": "Total Patrons",
+      "detailsText": "Details Text",
+      "status": "Status",
+      "pauseDate": "Pause Date",
+      "resumeDate": "Resume Date",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "receipientId": "Receipient Id",
+      "userId": "User Id"
+    }
+  }
+}

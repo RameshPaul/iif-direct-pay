@@ -1,0 +1,148 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userAccount">
+      <h2 data-cy="userAccountDetailsHeading"><span jhiTranslate="iifDirectPayApp.userAccount.detail.title">User Account</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userAccount.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.accountType">Account Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserAccountType.' + userAccount.accountType }}">{{ userAccount.accountType }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.upiAddress">Upi Address</span></dt>
+        <dd>
+          <span>{{ userAccount.upiAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.mobileNumber">Mobile Number</span></dt>
+        <dd>
+          <span>{{ userAccount.mobileNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.upiActiveDate">Upi Active Date</span></dt>
+        <dd>
+          <span>{{ userAccount.upiActiveDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.upiStatus">Upi Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserAccountUpiStatus.' + userAccount.upiStatus }}">{{ userAccount.upiStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.upiSuspendedDate">Upi Suspended Date</span></dt>
+        <dd>
+          <span>{{ userAccount.upiSuspendedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.upiDeletedDate">Upi Deleted Date</span></dt>
+        <dd>
+          <span>{{ userAccount.upiDeletedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.upiAutoDebitEnabled">Upi Auto Debit Enabled</span></dt>
+        <dd>
+          <span>{{ userAccount.upiAutoDebitEnabled }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankName">Bank Name</span></dt>
+        <dd>
+          <span>{{ userAccount.bankName }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankAccountNumber">Bank Account Number</span></dt>
+        <dd>
+          <span>{{ userAccount.bankAccountNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankIFSCCode">Bank IFSC Code</span></dt>
+        <dd>
+          <span>{{ userAccount.bankIFSCCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankSWIFTCode">Bank SWIFT Code</span></dt>
+        <dd>
+          <span>{{ userAccount.bankSWIFTCode }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankBranchAddress">Bank Branch Address</span></dt>
+        <dd>
+          <span>{{ userAccount.bankBranchAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankStatus">Bank Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserAccountBankStatus.' + userAccount.bankStatus }}">{{ userAccount.bankStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankActiveDate">Bank Active Date</span></dt>
+        <dd>
+          <span>{{ userAccount.bankActiveDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankSuspendedDate">Bank Suspended Date</span></dt>
+        <dd>
+          <span>{{ userAccount.bankSuspendedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankDeletedDate">Bank Deleted Date</span></dt>
+        <dd>
+          <span>{{ userAccount.bankDeletedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.bankAutoDebitEnabled">Bank Auto Debit Enabled</span></dt>
+        <dd>
+          <span>{{ userAccount.bankAutoDebitEnabled }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.walletType">Wallet Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserAccountWalletType.' + userAccount.walletType }}">{{ userAccount.walletType }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.walletAddress">Wallet Address</span></dt>
+        <dd>
+          <span>{{ userAccount.walletAddress }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.walletStatus">Wallet Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserAccountWalletStatus.' + userAccount.walletStatus }}">{{
+            userAccount.walletStatus
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.wallterActiveDate">Wallter Active Date</span></dt>
+        <dd>
+          <span>{{ userAccount.wallterActiveDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.walletSuspendedDate">Wallet Suspended Date</span></dt>
+        <dd>
+          <span>{{ userAccount.walletSuspendedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.walletDeletedDate">Wallet Deleted Date</span></dt>
+        <dd>
+          <span>{{ userAccount.walletDeletedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.walletAutoDebitEnabled">Wallet Auto Debit Enabled</span></dt>
+        <dd>
+          <span>{{ userAccount.walletAutoDebitEnabled }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ userAccount.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ userAccount.updatedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.userId">User Id</span></dt>
+        <dd>
+          <span>{{ userAccount.userId?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userAccount.organizationId">Organization Id</span></dt>
+        <dd>
+          <div *ngIf="userAccount.organizationId">
+            <a [routerLink]="['/organization', userAccount.organizationId?.id, 'view']">{{ userAccount.organizationId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-account', userAccount.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

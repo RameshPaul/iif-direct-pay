@@ -1,0 +1,253 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-user-login-heading"
+        data-cy="UserLoginCreateUpdateHeading"
+        jhiTranslate="iifDirectPayApp.userLogin.home.createOrEditLabel"
+      >
+        Create or edit a User Login
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.loginType" for="field_loginType">Login Type</label>
+          <select class="form-control" name="loginType" formControlName="loginType" id="field_loginType" data-cy="loginType">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserLoginType.null' | translate }}</option>
+            <option *ngFor="let userLoginType of userLoginTypeValues" [value]="userLoginType">
+              {{ 'iifDirectPayApp.UserLoginType.' + userLoginType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.emailOTP" for="field_emailOTP">Email OTP</label>
+          <input type="text" class="form-control" name="emailOTP" id="field_emailOTP" data-cy="emailOTP" formControlName="emailOTP" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.phoneOTP" for="field_phoneOTP">Phone OTP</label>
+          <input type="text" class="form-control" name="phoneOTP" id="field_phoneOTP" data-cy="phoneOTP" formControlName="phoneOTP" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.emailOTPExpiryDate" for="field_emailOTPExpiryDate"
+            >Email OTP Expiry Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_emailOTPExpiryDate"
+              data-cy="emailOTPExpiryDate"
+              type="text"
+              class="form-control"
+              name="emailOTPExpiryDate"
+              ngbDatepicker
+              #emailOTPExpiryDateDp="ngbDatepicker"
+              formControlName="emailOTPExpiryDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="emailOTPExpiryDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.phoneOTPExpiryDate" for="field_phoneOTPExpiryDate"
+            >Phone OTP Expiry Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_phoneOTPExpiryDate"
+              data-cy="phoneOTPExpiryDate"
+              type="text"
+              class="form-control"
+              name="phoneOTPExpiryDate"
+              ngbDatepicker
+              #phoneOTPExpiryDateDp="ngbDatepicker"
+              formControlName="phoneOTPExpiryDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="phoneOTPExpiryDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.locationIP" for="field_locationIP">Location IP</label>
+          <input
+            type="text"
+            class="form-control"
+            name="locationIP"
+            id="field_locationIP"
+            data-cy="locationIP"
+            formControlName="locationIP"
+          />
+          <div *ngIf="editForm.get('locationIP')!.invalid && (editForm.get('locationIP')!.dirty || editForm.get('locationIP')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('locationIP')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.locationDetails" for="field_locationDetails"
+            >Location Details</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="locationDetails"
+            id="field_locationDetails"
+            data-cy="locationDetails"
+            formControlName="locationDetails"
+          />
+          <div
+            *ngIf="
+              editForm.get('locationDetails')!.invalid &&
+              (editForm.get('locationDetails')!.dirty || editForm.get('locationDetails')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('locationDetails')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.latlog" for="field_latlog">Latlog</label>
+          <input type="text" class="form-control" name="latlog" id="field_latlog" data-cy="latlog" formControlName="latlog" />
+          <div *ngIf="editForm.get('latlog')!.invalid && (editForm.get('latlog')!.dirty || editForm.get('latlog')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('latlog')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.browser" for="field_browser">Browser</label>
+          <input type="text" class="form-control" name="browser" id="field_browser" data-cy="browser" formControlName="browser" />
+          <div *ngIf="editForm.get('browser')!.invalid && (editForm.get('browser')!.dirty || editForm.get('browser')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('browser')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.device" for="field_device">Device</label>
+          <input type="text" class="form-control" name="device" id="field_device" data-cy="device" formControlName="device" />
+          <div *ngIf="editForm.get('device')!.invalid && (editForm.get('device')!.dirty || editForm.get('device')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('device')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.loginDateTime" for="field_loginDateTime">Login Date Time</label>
+          <div class="d-flex">
+            <input
+              id="field_loginDateTime"
+              data-cy="loginDateTime"
+              type="datetime-local"
+              class="form-control"
+              name="loginDateTime"
+              formControlName="loginDateTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.loginToken" for="field_loginToken">Login Token</label>
+          <input
+            type="text"
+            class="form-control"
+            name="loginToken"
+            id="field_loginToken"
+            data-cy="loginToken"
+            formControlName="loginToken"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.updatedDate" for="field_updatedDate">Updated Date</label>
+          <div class="d-flex">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="updatedDate"
+              formControlName="updatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userLogin.userId" for="field_userId">User Id</label>
+          <select class="form-control" id="field_userId" data-cy="userId" name="userId" formControlName="userId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('userId')!.value?.id ? editForm.get('userId')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

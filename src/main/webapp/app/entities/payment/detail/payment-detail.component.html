@@ -1,0 +1,206 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="payment">
+      <h2 data-cy="paymentDetailsHeading"><span jhiTranslate="iifDirectPayApp.payment.detail.title">Payment</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ payment.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.recurringPeriod">Recurring Period</span></dt>
+        <dd>
+          <span>{{ payment.recurringPeriod | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.amount">Amount</span></dt>
+        <dd>
+          <span>{{ payment.amount }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.transactionId">Transaction Id</span></dt>
+        <dd>
+          <span>{{ payment.transactionId }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentType">Payment Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.PaymentType.' + payment.paymentType }}">{{ payment.paymentType }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentSource">Payment Source</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserAccountType.' + payment.paymentSource }}">{{ payment.paymentSource }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentStatus">Payment Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.PaymentStatus.' + payment.paymentStatus }}">{{ payment.paymentStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentStatusDetails">Payment Status Details</span></dt>
+        <dd>
+          <span>{{ payment.paymentStatusDetails }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentStartDateTime">Payment Start Date Time</span></dt>
+        <dd>
+          <span>{{ payment.paymentStartDateTime | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentCompleteDateTime">Payment Complete Date Time</span></dt>
+        <dd>
+          <span>{{ payment.paymentCompleteDateTime | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentFailureDateTime">Payment Failure Date Time</span></dt>
+        <dd>
+          <span>{{ payment.paymentFailureDateTime | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.patronComment">Patron Comment</span></dt>
+        <dd>
+          <span>{{ payment.patronComment }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.isAutoPay">Is Auto Pay</span></dt>
+        <dd>
+          <span>{{ payment.isAutoPay }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentDestinationSource">Payment Destination Source</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserAccountType.' + payment.paymentDestinationSource }}">{{
+            payment.paymentDestinationSource
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentReceivedDateTIme">Payment Received Date T Ime</span></dt>
+        <dd>
+          <span>{{ payment.paymentReceivedDateTIme | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentReceivedStatus">Payment Received Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.PaymentStatus.' + payment.paymentReceivedStatus }}">{{
+            payment.paymentReceivedStatus
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentReceivedDetails">Payment Received Details</span></dt>
+        <dd>
+          <span>{{ payment.paymentReceivedDetails }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentRefundedDateTime">Payment Refunded Date Time</span></dt>
+        <dd>
+          <span>{{ payment.paymentRefundedDateTime | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.userComment">User Comment</span></dt>
+        <dd>
+          <span>{{ payment.userComment }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.flaggedDateTime">Flagged Date Time</span></dt>
+        <dd>
+          <span>{{ payment.flaggedDateTime | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.flagDetails">Flag Details</span></dt>
+        <dd>
+          <span>{{ payment.flagDetails }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.flaggedEmailId">Flagged Email Id</span></dt>
+        <dd>
+          <span>{{ payment.flaggedEmailId }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.flaggedAmount">Flagged Amount</span></dt>
+        <dd>
+          <span>{{ payment.flaggedAmount }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.flagCreatedDateTime">Flag Created Date Time</span></dt>
+        <dd>
+          <span>{{ payment.flagCreatedDateTime | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.isRecurringPayment">Is Recurring Payment</span></dt>
+        <dd>
+          <span>{{ payment.isRecurringPayment }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.transactionDetails">Transaction Details</span></dt>
+        <dd>
+          <span>{{ payment.transactionDetails }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ payment.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ payment.updatedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.patronId">Patron Id</span></dt>
+        <dd>
+          <div *ngIf="payment.patronId">
+            <a [routerLink]="['/patron', payment.patronId?.id, 'view']">{{ payment.patronId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.patronUserId">Patron User Id</span></dt>
+        <dd>
+          <span>{{ payment.patronUserId?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.patronUserOrgId">Patron User Org Id</span></dt>
+        <dd>
+          <div *ngIf="payment.patronUserOrgId">
+            <a [routerLink]="['/organization', payment.patronUserOrgId?.id, 'view']">{{ payment.patronUserOrgId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.receipientId">Receipient Id</span></dt>
+        <dd>
+          <div *ngIf="payment.receipientId">
+            <a [routerLink]="['/receipient', payment.receipientId?.id, 'view']">{{ payment.receipientId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.receipientUserId">Receipient User Id</span></dt>
+        <dd>
+          <span>{{ payment.receipientUserId?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.receipientUserOrgId">Receipient User Org Id</span></dt>
+        <dd>
+          <div *ngIf="payment.receipientUserOrgId">
+            <a [routerLink]="['/organization', payment.receipientUserOrgId?.id, 'view']">{{ payment.receipientUserOrgId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentSourceAccountId">Payment Source Account Id</span></dt>
+        <dd>
+          <div *ngIf="payment.paymentSourceAccountId">
+            <a [routerLink]="['/user-account', payment.paymentSourceAccountId?.id, 'view']">{{ payment.paymentSourceAccountId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.paymentDestinationAccountId">Payment Destination Account Id</span></dt>
+        <dd>
+          <div *ngIf="payment.paymentDestinationAccountId">
+            <a [routerLink]="['/user-account', payment.paymentDestinationAccountId?.id, 'view']">{{
+              payment.paymentDestinationAccountId?.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.flaggedUserId">Flagged User Id</span></dt>
+        <dd>
+          <span>{{ payment.flaggedUserId?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.flaggedUserOrgId">Flagged User Org Id</span></dt>
+        <dd>
+          <div *ngIf="payment.flaggedUserOrgId">
+            <a [routerLink]="['/organization', payment.flaggedUserOrgId?.id, 'view']">{{ payment.flaggedUserOrgId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.flagClearedUserId">Flag Cleared User Id</span></dt>
+        <dd>
+          <span>{{ payment.flagClearedUserId?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.payment.flagClearedUserOrgId">Flag Cleared User Org Id</span></dt>
+        <dd>
+          <div *ngIf="payment.flagClearedUserOrgId">
+            <a [routerLink]="['/organization', payment.flagClearedUserOrgId?.id, 'view']">{{ payment.flagClearedUserOrgId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/payment', payment.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

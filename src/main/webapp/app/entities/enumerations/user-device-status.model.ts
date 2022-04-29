@@ -1,0 +1,11 @@
+export enum UserDeviceStatus {
+  INACTIVE = 'INACTIVE',
+
+  ACTIVE = 'ACTIVE',
+
+  SUSPENDED = 'SUSPENDED',
+
+  DELETED = 'DELETED',
+
+  UN_INSTALLED = 'UN_INSTALLED',
+}

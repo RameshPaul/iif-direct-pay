@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="UserAccountHeading">
+    <span jhiTranslate="iifDirectPayApp.userAccount.home.title">User Accounts</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.userAccount.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-user-account"
+        [routerLink]="['/user-account/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.userAccount.home.createLabel"> Create a new User Account </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="userAccounts?.length === 0">
+    <span jhiTranslate="iifDirectPayApp.userAccount.home.notFound">No userAccounts found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="userAccounts && userAccounts.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.accountType">Account Type</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.upiAddress">Upi Address</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.mobileNumber">Mobile Number</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.upiActiveDate">Upi Active Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.upiStatus">Upi Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.upiSuspendedDate">Upi Suspended Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.upiDeletedDate">Upi Deleted Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.upiAutoDebitEnabled">Upi Auto Debit Enabled</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankName">Bank Name</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankAccountNumber">Bank Account Number</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankIFSCCode">Bank IFSC Code</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankSWIFTCode">Bank SWIFT Code</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankBranchAddress">Bank Branch Address</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankStatus">Bank Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankActiveDate">Bank Active Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankSuspendedDate">Bank Suspended Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankDeletedDate">Bank Deleted Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.bankAutoDebitEnabled">Bank Auto Debit Enabled</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.walletType">Wallet Type</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.walletAddress">Wallet Address</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.walletStatus">Wallet Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.wallterActiveDate">Wallter Active Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.walletSuspendedDate">Wallet Suspended Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.walletDeletedDate">Wallet Deleted Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.walletAutoDebitEnabled">Wallet Auto Debit Enabled</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.userId">User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userAccount.organizationId">Organization Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userAccount of userAccounts; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/user-account', userAccount.id, 'view']">{{ userAccount.id }}</a>
+          </td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserAccountType.' + userAccount.accountType }}">{{ userAccount.accountType }}</td>
+          <td>{{ userAccount.upiAddress }}</td>
+          <td>{{ userAccount.mobileNumber }}</td>
+          <td>{{ userAccount.upiActiveDate | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserAccountUpiStatus.' + userAccount.upiStatus }}">{{ userAccount.upiStatus }}</td>
+          <td>{{ userAccount.upiSuspendedDate | formatMediumDatetime }}</td>
+          <td>{{ userAccount.upiDeletedDate | formatMediumDatetime }}</td>
+          <td>{{ userAccount.upiAutoDebitEnabled }}</td>
+          <td>{{ userAccount.bankName }}</td>
+          <td>{{ userAccount.bankAccountNumber }}</td>
+          <td>{{ userAccount.bankIFSCCode }}</td>
+          <td>{{ userAccount.bankSWIFTCode }}</td>
+          <td>{{ userAccount.bankBranchAddress }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserAccountBankStatus.' + userAccount.bankStatus }}">{{ userAccount.bankStatus }}</td>
+          <td>{{ userAccount.bankActiveDate | formatMediumDatetime }}</td>
+          <td>{{ userAccount.bankSuspendedDate | formatMediumDatetime }}</td>
+          <td>{{ userAccount.bankDeletedDate | formatMediumDatetime }}</td>
+          <td>{{ userAccount.bankAutoDebitEnabled }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserAccountWalletType.' + userAccount.walletType }}">{{ userAccount.walletType }}</td>
+          <td>{{ userAccount.walletAddress }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserAccountWalletStatus.' + userAccount.walletStatus }}">{{ userAccount.walletStatus }}</td>
+          <td>{{ userAccount.wallterActiveDate | formatMediumDatetime }}</td>
+          <td>{{ userAccount.walletSuspendedDate | formatMediumDatetime }}</td>
+          <td>{{ userAccount.walletDeletedDate | formatMediumDatetime }}</td>
+          <td>{{ userAccount.walletAutoDebitEnabled }}</td>
+          <td>{{ userAccount.createdDate | formatMediumDatetime }}</td>
+          <td>{{ userAccount.updatedDate | formatMediumDatetime }}</td>
+          <td>
+            {{ userAccount.userId?.id }}
+          </td>
+          <td>
+            <div *ngIf="userAccount.organizationId">
+              <a [routerLink]="['/organization', userAccount.organizationId?.id, 'view']">{{ userAccount.organizationId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/user-account', userAccount.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/user-account', userAccount.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(userAccount)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

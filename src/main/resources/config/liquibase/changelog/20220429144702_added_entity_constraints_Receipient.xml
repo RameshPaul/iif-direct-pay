@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Receipient.
+    -->
+    <changeSet id="20220429144702-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="user_id_id"
+                                 baseTableName="receipient"
+                                 constraintName="fk_receipient__user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="organization_id_id"
+                                 baseTableName="receipient"
+                                 constraintName="fk_receipient__organization_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+        <addForeignKeyConstraint baseColumnNames="managed_organiztion_id_id"
+                                 baseTableName="receipient"
+                                 constraintName="fk_receipient__managed_organiztion_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+        <addForeignKeyConstraint baseColumnNames="created_user_id_id"
+                                 baseTableName="receipient"
+                                 constraintName="fk_receipient__created_user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="created_user_org_id_id"
+                                 baseTableName="receipient"
+                                 constraintName="fk_receipient__created_user_org_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+        <addForeignKeyConstraint baseColumnNames="approved_user_id_id"
+                                 baseTableName="receipient"
+                                 constraintName="fk_receipient__approved_user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="approved_user_org_id_id"
+                                 baseTableName="receipient"
+                                 constraintName="fk_receipient__approved_user_org_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+        <addForeignKeyConstraint baseColumnNames="rejected_user_id_id"
+                                 baseTableName="receipient"
+                                 constraintName="fk_receipient__rejected_user_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="rejected_user_org_id_id"
+                                 baseTableName="receipient"
+                                 constraintName="fk_receipient__rejected_user_org_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+    </changeSet>
+</databaseChangeLog>

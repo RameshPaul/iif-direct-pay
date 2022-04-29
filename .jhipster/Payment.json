@@ -1,0 +1,202 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429144705",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "payment",
+  "fields": [
+    {
+      "fieldName": "recurringPeriod",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "transactionId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentType",
+      "fieldType": "PaymentType",
+      "fieldValues": "CREDIT,DEBIT"
+    },
+    {
+      "fieldName": "paymentSource",
+      "fieldType": "UserAccountType",
+      "fieldValues": "UPI,BANK,WALLET"
+    },
+    {
+      "fieldName": "paymentStatus",
+      "fieldType": "PaymentStatus",
+      "fieldValues": "INITIATED,PENDING,COMPLETED,FAILED"
+    },
+    {
+      "fieldName": "paymentStatusDetails",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentStartDateTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "paymentCompleteDateTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "paymentFailureDateTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "patronComment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isAutoPay",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "paymentDestinationSource",
+      "fieldType": "UserAccountType",
+      "fieldValues": "UPI,BANK,WALLET"
+    },
+    {
+      "fieldName": "paymentReceivedDateTIme",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "paymentReceivedStatus",
+      "fieldType": "PaymentStatus",
+      "fieldValues": "INITIATED,PENDING,COMPLETED,FAILED"
+    },
+    {
+      "fieldName": "paymentReceivedDetails",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "paymentRefundedDateTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "userComment",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "flaggedDateTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "flagDetails",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "flaggedEmailId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "flaggedAmount",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "flagCreatedDateTime",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "isRecurringPayment",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "transactionDetails",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Payment",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "patron",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "patronId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "patronUserId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "patronUserOrgId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "receipient",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "receipientId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "receipientUserId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "receipientUserOrgId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "userAccount",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "paymentSourceAccountId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "userAccount",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "paymentDestinationAccountId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "flaggedUserId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "flaggedUserOrgId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "flagClearedUserId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "payment",
+      "relationshipName": "flagClearedUserOrgId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

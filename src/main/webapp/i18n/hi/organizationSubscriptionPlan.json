@@ -1,0 +1,40 @@
+{
+  "iifDirectPayApp": {
+    "organizationSubscriptionPlan": {
+      "home": {
+        "title": "OrganizationSubscriptionPlans",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Organization Subscription Plan बनाएँ",
+        "createOrEditLabel": "Organization Subscription Plan बनाएँ या संपादित करें",
+        "notFound": "No Organization Subscription Plans found"
+      },
+      "created": "एक नया Organization Subscription Plan [identifier: {{ param }}] तैयार है",
+      "updated": "एक Organization Subscription Plan [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Organization Subscription Plan [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Organization Subscription Plan [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Organization Subscription Plan"
+      },
+      "id": "ID",
+      "subscriptionName": "Subscription Name",
+      "subscriptionTitle": "Subscription Title",
+      "subscriptionType": "Subscription Type",
+      "subscriptionPrice": "Subscription Price",
+      "subscriptionQuantity": "Subscription Quantity",
+      "subscriptionPeriod": "Subscription Period",
+      "subscriptionTerms": "Subscription Terms",
+      "couponCode": "Coupon Code",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "suspendedDate": "Suspended Date",
+      "deletedDate": "Deleted Date",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "organizationId": "Organization Id",
+      "subscriptionId": "Subscription Id"
+    }
+  }
+}

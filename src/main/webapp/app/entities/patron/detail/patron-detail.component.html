@@ -1,0 +1,132 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="patron">
+      <h2 data-cy="patronDetailsHeading"><span jhiTranslate="iifDirectPayApp.patron.detail.title">Patron</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ patron.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.isRecurring">Is Recurring</span></dt>
+        <dd>
+          <span>{{ patron.isRecurring }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.recurringType">Recurring Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.ReceipientPatronRecurringType.' + patron.recurringType }}">{{
+            patron.recurringType
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.recurringPeriod">Recurring Period</span></dt>
+        <dd>
+          <span>{{ patron.recurringPeriod | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.enableReminder">Enable Reminder</span></dt>
+        <dd>
+          <span>{{ patron.enableReminder }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.isAutoPay">Is Auto Pay</span></dt>
+        <dd>
+          <span>{{ patron.isAutoPay }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.amountReceipientRequisite">Amount Receipient Requisite</span></dt>
+        <dd>
+          <span>{{ patron.amountReceipientRequisite }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.amountPatronPledge">Amount Patron Pledge</span></dt>
+        <dd>
+          <span>{{ patron.amountPatronPledge }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.amountPatronActual">Amount Patron Actual</span></dt>
+        <dd>
+          <span>{{ patron.amountPatronActual }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.ReceipientPatronStatus.' + patron.status }}">{{ patron.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.commitedStartDate">Commited Start Date</span></dt>
+        <dd>
+          <span>{{ patron.commitedStartDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.commitedEndDate">Commited End Date</span></dt>
+        <dd>
+          <span>{{ patron.commitedEndDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.actualStartDate">Actual Start Date</span></dt>
+        <dd>
+          <span>{{ patron.actualStartDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.actualEndDate">Actual End Date</span></dt>
+        <dd>
+          <span>{{ patron.actualEndDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.reccuringPauseDate">Reccuring Pause Date</span></dt>
+        <dd>
+          <span>{{ patron.reccuringPauseDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.recurringResumeDate">Recurring Resume Date</span></dt>
+        <dd>
+          <span>{{ patron.recurringResumeDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.recurringPauseReason">Recurring Pause Reason</span></dt>
+        <dd>
+          <span>{{ patron.recurringPauseReason }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ patron.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ patron.updatedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.deletedDate">Deleted Date</span></dt>
+        <dd>
+          <span>{{ patron.deletedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.patronUserId">Patron User Id</span></dt>
+        <dd>
+          <span>{{ patron.patronUserId?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.patronUserOrgId">Patron User Org Id</span></dt>
+        <dd>
+          <div *ngIf="patron.patronUserOrgId">
+            <a [routerLink]="['/organization', patron.patronUserOrgId?.id, 'view']">{{ patron.patronUserOrgId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.receipientId">Receipient Id</span></dt>
+        <dd>
+          <div *ngIf="patron.receipientId">
+            <a [routerLink]="['/receipient', patron.receipientId?.id, 'view']">{{ patron.receipientId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.receipientUserId">Receipient User Id</span></dt>
+        <dd>
+          <span>{{ patron.receipientUserId?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.patron.receipientUserOrgId">Receipient User Org Id</span></dt>
+        <dd>
+          <div *ngIf="patron.receipientUserOrgId">
+            <a [routerLink]="['/organization', patron.receipientUserOrgId?.id, 'view']">{{ patron.receipientUserOrgId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/patron', patron.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

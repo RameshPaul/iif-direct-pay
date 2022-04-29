@@ -1,0 +1,58 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429144658",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "user_organization",
+  "fields": [
+    {
+      "fieldName": "joiningDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "exitDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "UserOrganizationStatus",
+      "fieldValues": "INACTIVE,ACTIVE,SUSPENDED,DELETED,CLOSED"
+    },
+    {
+      "fieldName": "suspendedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "deletedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "UserOrganization",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "userOrganization",
+      "relationshipName": "organiationId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userOrganization",
+      "relationshipName": "userId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
