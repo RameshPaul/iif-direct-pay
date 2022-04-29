@@ -1,0 +1,380 @@
+
+entity SubscriptionPlan {
+	subscriptionName	String required
+    subscriptionTitle	String required
+    subscriptionType	SubscriptionType required
+    subscriptionPrice	Double required
+    subscriptionQuantity	Integer required
+    subscriptionPeriod	Integer required
+    subscriptionTerms	String
+    status	SubscriptionStatus required
+    createdDate	Instant
+    updatedDate	Instant
+}
+enum SubscriptionType {
+	FREE, PAID, PROMOTION, OTHER
+}
+
+enum SubscriptionStatus {
+    INACTIVE, ACTIVE, SUSPENDED, DELETED
+}
+
+entity Organization {
+	name String required
+    aliasName String
+    email String required
+    website String
+    phone Integer required
+    mobile Integer
+    representativeName String
+    representativeEmail String
+	representativePhone Integer
+	registrationNumber String
+    organizationType OrganizationType 
+    organizationTypeOther String
+    organizationTaxCategory OrganizationTaxCategory
+    organizationTaxCategoryOther String
+    establishedDate LocalDate
+    totalEmployeesNumber Integer
+    joinDate Instant
+    subscriptionStartDate LocalDate
+    subscriptionEndDate LocalDate
+    status OrganizationStatus required
+    isVerified Boolean
+    activatedDate Instant
+    createdDate Instant
+    updatedDate Instant
+    deletedDate Instant
+    suspendedDate Instant
+}
+
+enum OrganizationType {
+	NON_PROFIT, SOCIETY, RELIGIOUS, MISSIONS, OTHER
+}
+
+enum OrganizationTaxCategory {
+	NO_TAX_EXEMPTION, E80G, PRIVATE, RELIGIOUS, OTHER
+}
+
+enum OrganizationStatus {
+	INACTIVE, ACTIVE, SUSPENDED, DELETED
+}
+
+entity OrganizationSubscriptionPlan {
+	subscriptionName	String required
+    subscriptionTitle	String required
+    subscriptionType	SubscriptionType required
+    subscriptionPrice	Double required
+    subscriptionQuantity	Integer required
+    subscriptionPeriod	String required
+    subscriptionTerms	String
+    couponCode	String
+    startDate	LocalDate required
+    endDate	LocalDate required
+    suspendedDate	Instant
+    deletedDate	Instant
+    status	SubscriptionStatus required
+    createdDate	Instant
+    updatedDate	Instant
+}
+
+entity UserOrganization {
+	joiningDate	LocalDate
+    exitDate	LocalDate
+    status	UserOrganizationStatus
+    suspendedDate	Instant
+    deletedDate	Instant
+    createdDate	Instant
+    updatedDate	Instant
+}
+
+enum UserOrganizationStatus {
+    INACTIVE,
+    ACTIVE,
+    SUSPENDED,
+    DELETED,
+    CLOSED    
+}
+
+// entity Role {}
+// entity UserRole {}
+
+entity UserLogin {
+	loginType	UserLoginType
+    emailOTP	String
+    phoneOTP	String
+    emailOTPExpiryDate	LocalDate
+    phoneOTPExpiryDate	LocalDate
+    locationIP	String required
+    locationDetails	String required
+    latlog	String required
+    browser	String required
+    device	String required
+    loginDateTime	Instant
+    loginToken	String
+    createdDate	Instant
+    updatedDate	Instant
+}
+enum UserLoginType {
+	EMAIL, PHONE
+}
+
+entity UserDevice {
+    deviceName	String required
+    deviceId	String required
+    deviceToken	String 
+    deviceType	UserDeviceType required
+    deviceOS	String required
+    notificationEnabled	Boolean required
+    lastActivityDetails	String required
+    lastActiveDate	LocalDate required
+    lastActiveLocation	String required
+    appVersion	String required
+    forceLogin	Boolean required
+    status	UserDeviceStatus
+    loginDateTime	Instant
+    exitDate	Instant
+    createdDate	Instant
+    updatedDate	Instant
+}
+enum UserDeviceType {
+	MOBILE_PHONE, TABLET, LAPTOP, DESKTOP, OTHER
+}
+enum UserDeviceStatus {
+	INACTIVE, ACTIVE, SUSPENDED, DELETED, UN_INSTALLED
+}
+
+
+entity UserAccount {
+    accountType	UserAccountType required
+    upiAddress	String
+    mobileNumber	Integer
+    upiActiveDate	LocalDate
+    upiStatus	UserAccountUpiStatus
+    upiSuspendedDate	Instant
+    upiDeletedDate	Instant
+    upiAutoDebitEnabled	Boolean
+    bankName	String
+    bankAccountNumber	Integer
+    bankIFSCCode	String
+    bankSWIFTCode	String
+    bankBranchAddress	String
+    bankStatus	UserAccountBankStatus
+    bankActiveDate	Instant
+    bankSuspendedDate	Instant
+    bankDeletedDate	Instant
+    bankAutoDebitEnabled	Boolean
+    walletType	UserAccountWalletType
+    walletAddress	String
+    walletStatus	UserAccountWalletStatus
+    wallterActiveDate	Instant
+    walletSuspendedDate	Instant
+    walletDeletedDate	Instant
+    walletAutoDebitEnabled	Boolean
+    createdDate	Instant
+    updatedDate	Instant
+}
+enum UserAccountType{
+	UPI, BANK, WALLET
+}
+enum UserAccountUpiStatus{
+	INACTIVE, ACTIVE, SUSPENDED, DELETED
+}
+enum UserAccountBankStatus{
+	INACTIVE, ACTIVE, SUSPENDED, DELETED
+}
+enum UserAccountWalletStatus{
+	INACTIVE, ACTIVE, SUSPENDED, DELETED
+}
+enum UserAccountWalletType{
+	PAYTM, GPAY, PHONEPAY, AMAZONPAY
+}
+
+
+entity Receipient {
+    isRecurring	Boolean
+    recurringType	ReceipientPatronRecurringType required
+    recurringStartDate	LocalDate
+    recurringEndDate	LocalDate
+    enableReminder	Boolean
+    startDate	LocalDate
+    endDate	LocalDate
+    isAutoPay	Boolean
+    amountRequisite	Double
+    status	ReceipientPatronStatus
+    isManagedByOrg	Boolean
+    // managedOrganiztionId	foreignkey-OrgId
+    // createdUserId	foreignkey-UserID
+    // createdUserOrgId	foreignkey-OrgId
+    // approvedUserId	foreignkey-UserID
+    // approvedUserOrgId	foreignkey-OrgId
+    approvedDateTime	Instant
+    // rejectedUserId	foreignkey-UserID
+    // rejectedUserOrgId	foreignkey-OrgId
+    rejectedDateTime	Instant
+    rejectReason	String
+    onboardedDate	LocalDate
+    reccuringPauseDate	LocalDate
+    recurringResumeDate	LocalDate
+    recurringPauseReason	String
+    createdDate	Instant
+    updatedDate	Instant
+    deletedDate	Instant
+}
+enum ReceipientPatronRecurringType{
+	WEEKLY, MONTHLY, QUARTERLY, HALF_YEARLY, YEARLY, ONE_TIME
+}
+enum ReceipientPatronStatus{
+	INACTIVE, ACTIVE, SUSPENDED, DELETED, CLOSED
+}
+
+entity ReceipientRecurring {
+	recurringPeriod	Integer
+    startDate	LocalDate
+    endDate	LocalDate
+    amountRequisite	Double
+    amountPatronCommited	Double
+    amountReceived	Double
+    amountBalance	Double
+    totalPatrons	Integer
+    detailsText	String
+    status	ReceipientRecurringStatus
+    pauseDate	LocalDate
+    resumeDate	LocalDate
+    createdDate	Instant
+    updatedDate	Instant
+}
+enum ReceipientRecurringStatus{
+	UNDER_FUNDED, FULLY_FUNDED, OVER_FUNDED
+}
+
+entity Patron {
+    isRecurring	Boolean
+    recurringType	ReceipientPatronRecurringType required
+    recurringPeriod	LocalDate
+    enableReminder	Boolean
+    isAutoPay	Boolean
+    amountReceipientRequisite	Double
+    amountPatronPledge	Double
+    amountPatronActual	Double
+    status	ReceipientPatronStatus
+    commitedStartDate	LocalDate
+    commitedEndDate	LocalDate
+    actualStartDate	LocalDate
+    actualEndDate	LocalDate
+    reccuringPauseDate	LocalDate
+    recurringResumeDate	LocalDate
+    recurringPauseReason	String
+    createdDate	Instant
+    updatedDate	Instant
+    deletedDate	Instant
+}
+
+
+entity Payment {
+    recurringPeriod	LocalDate
+    amount	Double
+    transactionId	String
+    paymentType	PaymentType
+    paymentSource	UserAccountType
+    // paymentSourceAccountId	foreignkey-UserAccountId
+    paymentStatus	PaymentStatus
+    paymentStatusDetails	String
+    paymentStartDateTime	LocalDate
+    paymentCompleteDateTime	LocalDate
+    paymentFailureDateTime	LocalDate
+    patronComment	String
+    isAutoPay	Boolean
+    paymentDestinationSource	UserAccountType
+    // paymentDestinationAccountId	foreignkey-UserAccountId
+    paymentReceivedDateTIme	LocalDate
+    paymentReceivedStatus	PaymentStatus
+    paymentReceivedDetails	String
+    paymentRefundedDateTime	LocalDate
+    userComment	String
+    flaggedDateTime	LocalDate
+    flagDetails	String
+    // flaggedUserId	foreignkey-UserId
+    flaggedEmailId	String
+    flaggedAmount	Double
+    // flagClearedUserId	foreignkey-UserId
+    // flagClearedUserOrgId	foreignkey-OrgId
+    flagCreatedDateTime	LocalDate
+    isRecurringPayment	Boolean
+    transactionDetails	String
+    createdDate	Instant
+    updatedDate	Instant
+}
+enum PaymentType {
+	CREDIT, DEBIT
+}
+enum PaymentStatus {
+	INITIATED, PENDING, COMPLETED, FAILED
+}
+
+
+relationship ManyToOne{
+   Organization{subscriptionId} to SubscriptionPlan
+   OrganizationSubscriptionPlan{organizationId} to Organization
+   OrganizationSubscriptionPlan{subscriptionId} to SubscriptionPlan
+   
+   UserOrganization{organiationId} to Organization
+   UserOrganization{userId} to User
+   
+   UserLogin{userId} to User
+   
+   UserDevice{userId} to User
+   
+   UserAccount{userId} to User
+   UserAccount{organizationId} to Organization
+   
+   Receipient{userId} to User
+   Receipient{organizationId} to Organization
+   
+   ReceipientRecurring{receipientId} to Receipient
+   ReceipientRecurring{userId} to User
+   
+   Patron{patronUserId} to User
+   Patron{patronUserOrgId} to Organization
+}
+
+relationship ManyToOne{
+	Receipient{managedOrganiztionId} to Organization
+    Receipient{createdUserId} to User
+    Receipient{createdUserOrgId} to Organization
+    Receipient{approvedUserId} to User
+    Receipient{approvedUserOrgId} to Organization
+    Receipient{rejectedUserId} to User
+    Receipient{rejectedUserOrgId} to Organization    
+
+   Patron{receipientId} to Receipient
+   Patron{receipientUserId} to User
+   Patron{receipientUserOrgId} to Organization
+   
+   Payment{patronId} to Patron
+   Payment{patronUserId} to User
+   Payment{patronUserOrgId} to Organization
+   Payment{receipientId} to Receipient
+   Payment{receipientUserId} to User
+   Payment{receipientUserOrgId} to Organization
+   
+   Payment{paymentSourceAccountId} to UserAccount
+   Payment{paymentDestinationAccountId} to UserAccount
+   
+   Payment{flaggedUserId} to User
+   Payment{flaggedUserOrgId} to Organization
+   Payment{flagClearedUserId} to User
+   Payment{flagClearedUserOrgId} to Organization
+   
+   
+   
+}
+
+paginate all with pagination
+
+dto * with mapstruct
+
+// service all with serviceImpl
+
+
+
