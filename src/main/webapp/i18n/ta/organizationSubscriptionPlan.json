@@ -1,0 +1,40 @@
+{
+  "iifDirectPayApp": {
+    "organizationSubscriptionPlan": {
+      "home": {
+        "title": "Organization Subscription Plans",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Organization Subscription Plan-ஐ உருவாக்கு",
+        "createOrEditLabel": "Organization Subscription Plan -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No Organization Subscription Plans found"
+      },
+      "created": "Organization Subscription Plan புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "Organization Subscription Plan மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A Organization Subscription Plan நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் Organization Subscription Plan {{ id }}?"
+      },
+      "detail": {
+        "title": "Organization Subscription Plan"
+      },
+      "id": "ID",
+      "subscriptionName": "Subscription Name",
+      "subscriptionTitle": "Subscription Title",
+      "subscriptionType": "Subscription Type",
+      "subscriptionPrice": "Subscription Price",
+      "subscriptionQuantity": "Subscription Quantity",
+      "subscriptionPeriod": "Subscription Period",
+      "subscriptionTerms": "Subscription Terms",
+      "couponCode": "Coupon Code",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "suspendedDate": "Suspended Date",
+      "deletedDate": "Deleted Date",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "organizationId": "Organization Id",
+      "subscriptionId": "Subscription Id"
+    }
+  }
+}

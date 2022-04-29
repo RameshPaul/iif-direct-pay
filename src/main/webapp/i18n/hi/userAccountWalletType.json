@@ -1,0 +1,11 @@
+{
+  "iifDirectPayApp": {
+    "UserAccountWalletType": {
+      "null": "",
+      "PAYTM": "PAYTM",
+      "GPAY": "GPAY",
+      "PHONEPAY": "PHONEPAY",
+      "AMAZONPAY": "AMAZONPAY"
+    }
+  }
+}

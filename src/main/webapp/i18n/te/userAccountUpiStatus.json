@@ -1,0 +1,11 @@
+{
+  "iifDirectPayApp": {
+    "UserAccountUpiStatus": {
+      "null": "",
+      "INACTIVE": "INACTIVE",
+      "ACTIVE": "ACTIVE",
+      "SUSPENDED": "SUSPENDED",
+      "DELETED": "DELETED"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "iifDirectPayApp": {
+    "organization": {
+      "home": {
+        "title": "Organizations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Organization-ஐ உருவாக்கு",
+        "createOrEditLabel": "Organization -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No Organizations found"
+      },
+      "created": "Organization புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "Organization மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A Organization நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் Organization {{ id }}?"
+      },
+      "detail": {
+        "title": "Organization"
+      },
+      "id": "ID",
+      "name": "Name",
+      "aliasName": "Alias Name",
+      "email": "Email",
+      "website": "Website",
+      "phone": "Phone",
+      "mobile": "Mobile",
+      "representativeName": "Representative Name",
+      "representativeEmail": "Representative Email",
+      "representativePhone": "Representative Phone",
+      "registrationNumber": "Registration Number",
+      "organizationType": "Organization Type",
+      "organizationTypeOther": "Organization Type Other",
+      "organizationTaxCategory": "Organization Tax Category",
+      "organizationTaxCategoryOther": "Organization Tax Category Other",
+      "establishedDate": "Established Date",
+      "totalEmployeesNumber": "Total Employees Number",
+      "joinDate": "Join Date",
+      "subscriptionStartDate": "Subscription Start Date",
+      "subscriptionEndDate": "Subscription End Date",
+      "status": "Status",
+      "isVerified": "Is Verified",
+      "activatedDate": "Activated Date",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "deletedDate": "Deleted Date",
+      "suspendedDate": "Suspended Date",
+      "subscriptionId": "Subscription Id"
+    }
+  }
+}

@@ -1,0 +1,460 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-organization-subscription-plan-heading"
+        data-cy="OrganizationSubscriptionPlanCreateUpdateHeading"
+        jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.home.createOrEditLabel"
+      >
+        Create or edit a Organization Subscription Plan
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionName"
+            for="field_subscriptionName"
+            >Subscription Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="subscriptionName"
+            id="field_subscriptionName"
+            data-cy="subscriptionName"
+            formControlName="subscriptionName"
+          />
+          <div
+            *ngIf="
+              editForm.get('subscriptionName')!.invalid &&
+              (editForm.get('subscriptionName')!.dirty || editForm.get('subscriptionName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('subscriptionName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionTitle"
+            for="field_subscriptionTitle"
+            >Subscription Title</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="subscriptionTitle"
+            id="field_subscriptionTitle"
+            data-cy="subscriptionTitle"
+            formControlName="subscriptionTitle"
+          />
+          <div
+            *ngIf="
+              editForm.get('subscriptionTitle')!.invalid &&
+              (editForm.get('subscriptionTitle')!.dirty || editForm.get('subscriptionTitle')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('subscriptionTitle')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionType"
+            for="field_subscriptionType"
+            >Subscription Type</label
+          >
+          <select
+            class="form-control"
+            name="subscriptionType"
+            formControlName="subscriptionType"
+            id="field_subscriptionType"
+            data-cy="subscriptionType"
+          >
+            <option [ngValue]="null">{{ 'iifDirectPayApp.SubscriptionType.null' | translate }}</option>
+            <option *ngFor="let subscriptionType of subscriptionTypeValues" [value]="subscriptionType">
+              {{ 'iifDirectPayApp.SubscriptionType.' + subscriptionType | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('subscriptionType')!.invalid &&
+              (editForm.get('subscriptionType')!.dirty || editForm.get('subscriptionType')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('subscriptionType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionPrice"
+            for="field_subscriptionPrice"
+            >Subscription Price</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="subscriptionPrice"
+            id="field_subscriptionPrice"
+            data-cy="subscriptionPrice"
+            formControlName="subscriptionPrice"
+          />
+          <div
+            *ngIf="
+              editForm.get('subscriptionPrice')!.invalid &&
+              (editForm.get('subscriptionPrice')!.dirty || editForm.get('subscriptionPrice')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('subscriptionPrice')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('subscriptionPrice')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionQuantity"
+            for="field_subscriptionQuantity"
+            >Subscription Quantity</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="subscriptionQuantity"
+            id="field_subscriptionQuantity"
+            data-cy="subscriptionQuantity"
+            formControlName="subscriptionQuantity"
+          />
+          <div
+            *ngIf="
+              editForm.get('subscriptionQuantity')!.invalid &&
+              (editForm.get('subscriptionQuantity')!.dirty || editForm.get('subscriptionQuantity')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('subscriptionQuantity')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('subscriptionQuantity')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionPeriod"
+            for="field_subscriptionPeriod"
+            >Subscription Period</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="subscriptionPeriod"
+            id="field_subscriptionPeriod"
+            data-cy="subscriptionPeriod"
+            formControlName="subscriptionPeriod"
+          />
+          <div
+            *ngIf="
+              editForm.get('subscriptionPeriod')!.invalid &&
+              (editForm.get('subscriptionPeriod')!.dirty || editForm.get('subscriptionPeriod')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('subscriptionPeriod')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionTerms"
+            for="field_subscriptionTerms"
+            >Subscription Terms</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="subscriptionTerms"
+            id="field_subscriptionTerms"
+            data-cy="subscriptionTerms"
+            formControlName="subscriptionTerms"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.couponCode" for="field_couponCode"
+            >Coupon Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="couponCode"
+            id="field_couponCode"
+            data-cy="couponCode"
+            formControlName="couponCode"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.startDate" for="field_startDate"
+            >Start Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_startDate"
+              data-cy="startDate"
+              type="text"
+              class="form-control"
+              name="startDate"
+              ngbDatepicker
+              #startDateDp="ngbDatepicker"
+              formControlName="startDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('startDate')!.invalid && (editForm.get('startDate')!.dirty || editForm.get('startDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('startDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.endDate" for="field_endDate">End Date</label>
+          <div class="input-group">
+            <input
+              id="field_endDate"
+              data-cy="endDate"
+              type="text"
+              class="form-control"
+              name="endDate"
+              ngbDatepicker
+              #endDateDp="ngbDatepicker"
+              formControlName="endDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('endDate')!.invalid && (editForm.get('endDate')!.dirty || editForm.get('endDate')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('endDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.suspendedDate" for="field_suspendedDate"
+            >Suspended Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_suspendedDate"
+              data-cy="suspendedDate"
+              type="datetime-local"
+              class="form-control"
+              name="suspendedDate"
+              formControlName="suspendedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.deletedDate" for="field_deletedDate"
+            >Deleted Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_deletedDate"
+              data-cy="deletedDate"
+              type="datetime-local"
+              class="form-control"
+              name="deletedDate"
+              formControlName="deletedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.SubscriptionStatus.null' | translate }}</option>
+            <option *ngFor="let subscriptionStatus of subscriptionStatusValues" [value]="subscriptionStatus">
+              {{ 'iifDirectPayApp.SubscriptionStatus.' + subscriptionStatus | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('status')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.updatedDate" for="field_updatedDate"
+            >Updated Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="updatedDate"
+              formControlName="updatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.organizationId" for="field_organizationId"
+            >Organization Id</label
+          >
+          <select
+            class="form-control"
+            id="field_organizationId"
+            data-cy="organizationId"
+            name="organizationId"
+            formControlName="organizationId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                organizationOption.id === editForm.get('organizationId')!.value?.id
+                  ? editForm.get('organizationId')!.value
+                  : organizationOption
+              "
+              *ngFor="let organizationOption of organizationsSharedCollection; trackBy: trackOrganizationById"
+            >
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionId" for="field_subscriptionId"
+            >Subscription Id</label
+          >
+          <select
+            class="form-control"
+            id="field_subscriptionId"
+            data-cy="subscriptionId"
+            name="subscriptionId"
+            formControlName="subscriptionId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                subscriptionPlanOption.id === editForm.get('subscriptionId')!.value?.id
+                  ? editForm.get('subscriptionId')!.value
+                  : subscriptionPlanOption
+              "
+              *ngFor="let subscriptionPlanOption of subscriptionPlansSharedCollection; trackBy: trackSubscriptionPlanById"
+            >
+              {{ subscriptionPlanOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

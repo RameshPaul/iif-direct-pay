@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity ReceipientRecurring.
+    -->
+    <changeSet id="20220429144703-1" author="jhipster">
+        <createTable tableName="receipient_recurring">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="recurring_period" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="start_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="end_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="amount_requisite" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="amount_patron_commited" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="amount_received" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="amount_balance" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="total_patrons" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="details_text" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pause_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="resume_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="updated_date" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="receipient_id_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="user_id_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="receipient_recurring" columnName="created_date" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="receipient_recurring" columnName="updated_date" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20220429144703-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/receipient_recurring.csv"
+                  separator=";"
+                  tableName="receipient_recurring"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="recurring_period" type="numeric"/>
+            <column name="start_date" type="date"/>
+            <column name="end_date" type="date"/>
+            <column name="amount_requisite" type="numeric"/>
+            <column name="amount_patron_commited" type="numeric"/>
+            <column name="amount_received" type="numeric"/>
+            <column name="amount_balance" type="numeric"/>
+            <column name="total_patrons" type="numeric"/>
+            <column name="details_text" type="string"/>
+            <column name="status" type="string"/>
+            <column name="pause_date" type="date"/>
+            <column name="resume_date" type="date"/>
+            <column name="created_date" type="date"/>
+            <column name="updated_date" type="date"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

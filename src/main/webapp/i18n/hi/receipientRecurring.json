@@ -1,0 +1,39 @@
+{
+  "iifDirectPayApp": {
+    "receipientRecurring": {
+      "home": {
+        "title": "ReceipientRecurrings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Receipient Recurring बनाएँ",
+        "createOrEditLabel": "Receipient Recurring बनाएँ या संपादित करें",
+        "notFound": "No Receipient Recurrings found"
+      },
+      "created": "एक नया Receipient Recurring [identifier: {{ param }}] तैयार है",
+      "updated": "एक Receipient Recurring [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Receipient Recurring [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Receipient Recurring [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Receipient Recurring"
+      },
+      "id": "ID",
+      "recurringPeriod": "Recurring Period",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "amountRequisite": "Amount Requisite",
+      "amountPatronCommited": "Amount Patron Commited",
+      "amountReceived": "Amount Received",
+      "amountBalance": "Amount Balance",
+      "totalPatrons": "Total Patrons",
+      "detailsText": "Details Text",
+      "status": "Status",
+      "pauseDate": "Pause Date",
+      "resumeDate": "Resume Date",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "receipientId": "Receipient Id",
+      "userId": "User Id"
+    }
+  }
+}

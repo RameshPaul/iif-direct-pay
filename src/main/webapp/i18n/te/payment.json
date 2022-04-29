@@ -1,0 +1,62 @@
+{
+  "iifDirectPayApp": {
+    "payment": {
+      "home": {
+        "title": "Payments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "కొత్త Payment  సృష్టించండి",
+        "createOrEditLabel": "Payment సృష్టించండి లేదా సవరించండి",
+        "notFound": "No Payments found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త Payment సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త Payment సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త Payment తొలగించబడినది",
+      "delete": {
+        "question": "మీరు Payment {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "Payment"
+      },
+      "id": "ID",
+      "recurringPeriod": "Recurring Period",
+      "amount": "Amount",
+      "transactionId": "Transaction Id",
+      "paymentType": "Payment Type",
+      "paymentSource": "Payment Source",
+      "paymentStatus": "Payment Status",
+      "paymentStatusDetails": "Payment Status Details",
+      "paymentStartDateTime": "Payment Start Date Time",
+      "paymentCompleteDateTime": "Payment Complete Date Time",
+      "paymentFailureDateTime": "Payment Failure Date Time",
+      "patronComment": "Patron Comment",
+      "isAutoPay": "Is Auto Pay",
+      "paymentDestinationSource": "Payment Destination Source",
+      "paymentReceivedDateTIme": "Payment Received Date T Ime",
+      "paymentReceivedStatus": "Payment Received Status",
+      "paymentReceivedDetails": "Payment Received Details",
+      "paymentRefundedDateTime": "Payment Refunded Date Time",
+      "userComment": "User Comment",
+      "flaggedDateTime": "Flagged Date Time",
+      "flagDetails": "Flag Details",
+      "flaggedEmailId": "Flagged Email Id",
+      "flaggedAmount": "Flagged Amount",
+      "flagCreatedDateTime": "Flag Created Date Time",
+      "isRecurringPayment": "Is Recurring Payment",
+      "transactionDetails": "Transaction Details",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "patronId": "Patron Id",
+      "patronUserId": "Patron User Id",
+      "patronUserOrgId": "Patron User Org Id",
+      "receipientId": "Receipient Id",
+      "receipientUserId": "Receipient User Id",
+      "receipientUserOrgId": "Receipient User Org Id",
+      "paymentSourceAccountId": "Payment Source Account Id",
+      "paymentDestinationAccountId": "Payment Destination Account Id",
+      "flaggedUserId": "Flagged User Id",
+      "flaggedUserOrgId": "Flagged User Org Id",
+      "flagClearedUserId": "Flag Cleared User Id",
+      "flagClearedUserOrgId": "Flag Cleared User Org Id"
+    }
+  }
+}

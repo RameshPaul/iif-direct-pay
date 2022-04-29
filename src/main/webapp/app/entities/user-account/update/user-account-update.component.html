@@ -1,0 +1,461 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-user-account-heading"
+        data-cy="UserAccountCreateUpdateHeading"
+        jhiTranslate="iifDirectPayApp.userAccount.home.createOrEditLabel"
+      >
+        Create or edit a User Account
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.accountType" for="field_accountType">Account Type</label>
+          <select class="form-control" name="accountType" formControlName="accountType" id="field_accountType" data-cy="accountType">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserAccountType.null' | translate }}</option>
+            <option *ngFor="let userAccountType of userAccountTypeValues" [value]="userAccountType">
+              {{ 'iifDirectPayApp.UserAccountType.' + userAccountType | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('accountType')!.invalid && (editForm.get('accountType')!.dirty || editForm.get('accountType')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('accountType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.upiAddress" for="field_upiAddress">Upi Address</label>
+          <input
+            type="text"
+            class="form-control"
+            name="upiAddress"
+            id="field_upiAddress"
+            data-cy="upiAddress"
+            formControlName="upiAddress"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.mobileNumber" for="field_mobileNumber">Mobile Number</label>
+          <input
+            type="number"
+            class="form-control"
+            name="mobileNumber"
+            id="field_mobileNumber"
+            data-cy="mobileNumber"
+            formControlName="mobileNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.upiActiveDate" for="field_upiActiveDate"
+            >Upi Active Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_upiActiveDate"
+              data-cy="upiActiveDate"
+              type="text"
+              class="form-control"
+              name="upiActiveDate"
+              ngbDatepicker
+              #upiActiveDateDp="ngbDatepicker"
+              formControlName="upiActiveDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="upiActiveDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.upiStatus" for="field_upiStatus">Upi Status</label>
+          <select class="form-control" name="upiStatus" formControlName="upiStatus" id="field_upiStatus" data-cy="upiStatus">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserAccountUpiStatus.null' | translate }}</option>
+            <option *ngFor="let userAccountUpiStatus of userAccountUpiStatusValues" [value]="userAccountUpiStatus">
+              {{ 'iifDirectPayApp.UserAccountUpiStatus.' + userAccountUpiStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.upiSuspendedDate" for="field_upiSuspendedDate"
+            >Upi Suspended Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_upiSuspendedDate"
+              data-cy="upiSuspendedDate"
+              type="datetime-local"
+              class="form-control"
+              name="upiSuspendedDate"
+              formControlName="upiSuspendedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.upiDeletedDate" for="field_upiDeletedDate"
+            >Upi Deleted Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_upiDeletedDate"
+              data-cy="upiDeletedDate"
+              type="datetime-local"
+              class="form-control"
+              name="upiDeletedDate"
+              formControlName="upiDeletedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.upiAutoDebitEnabled" for="field_upiAutoDebitEnabled"
+            >Upi Auto Debit Enabled</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="upiAutoDebitEnabled"
+            id="field_upiAutoDebitEnabled"
+            data-cy="upiAutoDebitEnabled"
+            formControlName="upiAutoDebitEnabled"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankName" for="field_bankName">Bank Name</label>
+          <input type="text" class="form-control" name="bankName" id="field_bankName" data-cy="bankName" formControlName="bankName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankAccountNumber" for="field_bankAccountNumber"
+            >Bank Account Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="bankAccountNumber"
+            id="field_bankAccountNumber"
+            data-cy="bankAccountNumber"
+            formControlName="bankAccountNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankIFSCCode" for="field_bankIFSCCode">Bank IFSC Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="bankIFSCCode"
+            id="field_bankIFSCCode"
+            data-cy="bankIFSCCode"
+            formControlName="bankIFSCCode"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankSWIFTCode" for="field_bankSWIFTCode"
+            >Bank SWIFT Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bankSWIFTCode"
+            id="field_bankSWIFTCode"
+            data-cy="bankSWIFTCode"
+            formControlName="bankSWIFTCode"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankBranchAddress" for="field_bankBranchAddress"
+            >Bank Branch Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bankBranchAddress"
+            id="field_bankBranchAddress"
+            data-cy="bankBranchAddress"
+            formControlName="bankBranchAddress"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankStatus" for="field_bankStatus">Bank Status</label>
+          <select class="form-control" name="bankStatus" formControlName="bankStatus" id="field_bankStatus" data-cy="bankStatus">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserAccountBankStatus.null' | translate }}</option>
+            <option *ngFor="let userAccountBankStatus of userAccountBankStatusValues" [value]="userAccountBankStatus">
+              {{ 'iifDirectPayApp.UserAccountBankStatus.' + userAccountBankStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankActiveDate" for="field_bankActiveDate"
+            >Bank Active Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_bankActiveDate"
+              data-cy="bankActiveDate"
+              type="datetime-local"
+              class="form-control"
+              name="bankActiveDate"
+              formControlName="bankActiveDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankSuspendedDate" for="field_bankSuspendedDate"
+            >Bank Suspended Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_bankSuspendedDate"
+              data-cy="bankSuspendedDate"
+              type="datetime-local"
+              class="form-control"
+              name="bankSuspendedDate"
+              formControlName="bankSuspendedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankDeletedDate" for="field_bankDeletedDate"
+            >Bank Deleted Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_bankDeletedDate"
+              data-cy="bankDeletedDate"
+              type="datetime-local"
+              class="form-control"
+              name="bankDeletedDate"
+              formControlName="bankDeletedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.bankAutoDebitEnabled" for="field_bankAutoDebitEnabled"
+            >Bank Auto Debit Enabled</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="bankAutoDebitEnabled"
+            id="field_bankAutoDebitEnabled"
+            data-cy="bankAutoDebitEnabled"
+            formControlName="bankAutoDebitEnabled"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.walletType" for="field_walletType">Wallet Type</label>
+          <select class="form-control" name="walletType" formControlName="walletType" id="field_walletType" data-cy="walletType">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserAccountWalletType.null' | translate }}</option>
+            <option *ngFor="let userAccountWalletType of userAccountWalletTypeValues" [value]="userAccountWalletType">
+              {{ 'iifDirectPayApp.UserAccountWalletType.' + userAccountWalletType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.walletAddress" for="field_walletAddress"
+            >Wallet Address</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="walletAddress"
+            id="field_walletAddress"
+            data-cy="walletAddress"
+            formControlName="walletAddress"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.walletStatus" for="field_walletStatus">Wallet Status</label>
+          <select class="form-control" name="walletStatus" formControlName="walletStatus" id="field_walletStatus" data-cy="walletStatus">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserAccountWalletStatus.null' | translate }}</option>
+            <option *ngFor="let userAccountWalletStatus of userAccountWalletStatusValues" [value]="userAccountWalletStatus">
+              {{ 'iifDirectPayApp.UserAccountWalletStatus.' + userAccountWalletStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.wallterActiveDate" for="field_wallterActiveDate"
+            >Wallter Active Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_wallterActiveDate"
+              data-cy="wallterActiveDate"
+              type="datetime-local"
+              class="form-control"
+              name="wallterActiveDate"
+              formControlName="wallterActiveDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.walletSuspendedDate" for="field_walletSuspendedDate"
+            >Wallet Suspended Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_walletSuspendedDate"
+              data-cy="walletSuspendedDate"
+              type="datetime-local"
+              class="form-control"
+              name="walletSuspendedDate"
+              formControlName="walletSuspendedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.walletDeletedDate" for="field_walletDeletedDate"
+            >Wallet Deleted Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_walletDeletedDate"
+              data-cy="walletDeletedDate"
+              type="datetime-local"
+              class="form-control"
+              name="walletDeletedDate"
+              formControlName="walletDeletedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.walletAutoDebitEnabled" for="field_walletAutoDebitEnabled"
+            >Wallet Auto Debit Enabled</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="walletAutoDebitEnabled"
+            id="field_walletAutoDebitEnabled"
+            data-cy="walletAutoDebitEnabled"
+            formControlName="walletAutoDebitEnabled"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.updatedDate" for="field_updatedDate">Updated Date</label>
+          <div class="d-flex">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="updatedDate"
+              formControlName="updatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.userId" for="field_userId">User Id</label>
+          <select class="form-control" id="field_userId" data-cy="userId" name="userId" formControlName="userId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('userId')!.value?.id ? editForm.get('userId')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userAccount.organizationId" for="field_organizationId"
+            >Organization Id</label
+          >
+          <select
+            class="form-control"
+            id="field_organizationId"
+            data-cy="organizationId"
+            name="organizationId"
+            formControlName="organizationId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                organizationOption.id === editForm.get('organizationId')!.value?.id
+                  ? editForm.get('organizationId')!.value
+                  : organizationOption
+              "
+              *ngFor="let organizationOption of organizationsSharedCollection; trackBy: trackOrganizationById"
+            >
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

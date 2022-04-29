@@ -48,6 +48,17 @@ public class CacheConfiguration {
             createCache(cm, com.iif.directpay.domain.User.class.getName());
             createCache(cm, com.iif.directpay.domain.Authority.class.getName());
             createCache(cm, com.iif.directpay.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.iif.directpay.domain.SubscriptionPlan.class.getName());
+            createCache(cm, com.iif.directpay.domain.Organization.class.getName());
+            createCache(cm, com.iif.directpay.domain.OrganizationSubscriptionPlan.class.getName());
+            createCache(cm, com.iif.directpay.domain.UserOrganization.class.getName());
+            createCache(cm, com.iif.directpay.domain.UserLogin.class.getName());
+            createCache(cm, com.iif.directpay.domain.UserDevice.class.getName());
+            createCache(cm, com.iif.directpay.domain.UserAccount.class.getName());
+            createCache(cm, com.iif.directpay.domain.Receipient.class.getName());
+            createCache(cm, com.iif.directpay.domain.ReceipientRecurring.class.getName());
+            createCache(cm, com.iif.directpay.domain.Patron.class.getName());
+            createCache(cm, com.iif.directpay.domain.Payment.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

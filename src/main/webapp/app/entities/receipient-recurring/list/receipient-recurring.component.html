@@ -1,0 +1,116 @@
+<div>
+  <h2 id="page-heading" data-cy="ReceipientRecurringHeading">
+    <span jhiTranslate="iifDirectPayApp.receipientRecurring.home.title">Receipient Recurrings</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.receipientRecurring.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-receipient-recurring"
+        [routerLink]="['/receipient-recurring/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.receipientRecurring.home.createLabel"> Create a new Receipient Recurring </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="receipientRecurrings?.length === 0">
+    <span jhiTranslate="iifDirectPayApp.receipientRecurring.home.notFound">No receipientRecurrings found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="receipientRecurrings && receipientRecurrings.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.recurringPeriod">Recurring Period</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.startDate">Start Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.endDate">End Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.amountRequisite">Amount Requisite</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.amountPatronCommited">Amount Patron Commited</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.amountReceived">Amount Received</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.amountBalance">Amount Balance</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.totalPatrons">Total Patrons</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.detailsText">Details Text</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.status">Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.pauseDate">Pause Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.resumeDate">Resume Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.receipientId">Receipient Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipientRecurring.userId">User Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let receipientRecurring of receipientRecurrings; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/receipient-recurring', receipientRecurring.id, 'view']">{{ receipientRecurring.id }}</a>
+          </td>
+          <td>{{ receipientRecurring.recurringPeriod }}</td>
+          <td>{{ receipientRecurring.startDate | formatMediumDate }}</td>
+          <td>{{ receipientRecurring.endDate | formatMediumDate }}</td>
+          <td>{{ receipientRecurring.amountRequisite }}</td>
+          <td>{{ receipientRecurring.amountPatronCommited }}</td>
+          <td>{{ receipientRecurring.amountReceived }}</td>
+          <td>{{ receipientRecurring.amountBalance }}</td>
+          <td>{{ receipientRecurring.totalPatrons }}</td>
+          <td>{{ receipientRecurring.detailsText }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.ReceipientRecurringStatus.' + receipientRecurring.status }}">
+            {{ receipientRecurring.status }}
+          </td>
+          <td>{{ receipientRecurring.pauseDate | formatMediumDate }}</td>
+          <td>{{ receipientRecurring.resumeDate | formatMediumDate }}</td>
+          <td>{{ receipientRecurring.createdDate | formatMediumDatetime }}</td>
+          <td>{{ receipientRecurring.updatedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="receipientRecurring.receipientId">
+              <a [routerLink]="['/receipient', receipientRecurring.receipientId?.id, 'view']">{{ receipientRecurring.receipientId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ receipientRecurring.userId?.id }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/receipient-recurring', receipientRecurring.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/receipient-recurring', receipientRecurring.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(receipientRecurring)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

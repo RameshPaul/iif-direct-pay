@@ -1,0 +1,166 @@
+<div>
+  <h2 id="page-heading" data-cy="ReceipientHeading">
+    <span jhiTranslate="iifDirectPayApp.receipient.home.title">Receipients</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.receipient.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-receipient"
+        [routerLink]="['/receipient/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.receipient.home.createLabel"> Create a new Receipient </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="receipients?.length === 0">
+    <span jhiTranslate="iifDirectPayApp.receipient.home.notFound">No receipients found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="receipients && receipients.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.isRecurring">Is Recurring</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.recurringType">Recurring Type</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.recurringStartDate">Recurring Start Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.recurringEndDate">Recurring End Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.enableReminder">Enable Reminder</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.startDate">Start Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.endDate">End Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.isAutoPay">Is Auto Pay</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.amountRequisite">Amount Requisite</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.status">Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.isManagedByOrg">Is Managed By Org</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.approvedDateTime">Approved Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.rejectedDateTime">Rejected Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.rejectReason">Reject Reason</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.onboardedDate">Onboarded Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.reccuringPauseDate">Reccuring Pause Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.recurringResumeDate">Recurring Resume Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.recurringPauseReason">Recurring Pause Reason</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.deletedDate">Deleted Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.userId">User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.organizationId">Organization Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.managedOrganiztionId">Managed Organiztion Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.createdUserId">Created User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.createdUserOrgId">Created User Org Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.approvedUserId">Approved User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.approvedUserOrgId">Approved User Org Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.rejectedUserId">Rejected User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.receipient.rejectedUserOrgId">Rejected User Org Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let receipient of receipients; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/receipient', receipient.id, 'view']">{{ receipient.id }}</a>
+          </td>
+          <td>{{ receipient.isRecurring }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.ReceipientPatronRecurringType.' + receipient.recurringType }}">
+            {{ receipient.recurringType }}
+          </td>
+          <td>{{ receipient.recurringStartDate | formatMediumDate }}</td>
+          <td>{{ receipient.recurringEndDate | formatMediumDate }}</td>
+          <td>{{ receipient.enableReminder }}</td>
+          <td>{{ receipient.startDate | formatMediumDate }}</td>
+          <td>{{ receipient.endDate | formatMediumDate }}</td>
+          <td>{{ receipient.isAutoPay }}</td>
+          <td>{{ receipient.amountRequisite }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.ReceipientPatronStatus.' + receipient.status }}">{{ receipient.status }}</td>
+          <td>{{ receipient.isManagedByOrg }}</td>
+          <td>{{ receipient.approvedDateTime | formatMediumDatetime }}</td>
+          <td>{{ receipient.rejectedDateTime | formatMediumDatetime }}</td>
+          <td>{{ receipient.rejectReason }}</td>
+          <td>{{ receipient.onboardedDate | formatMediumDate }}</td>
+          <td>{{ receipient.reccuringPauseDate | formatMediumDate }}</td>
+          <td>{{ receipient.recurringResumeDate | formatMediumDate }}</td>
+          <td>{{ receipient.recurringPauseReason }}</td>
+          <td>{{ receipient.createdDate | formatMediumDatetime }}</td>
+          <td>{{ receipient.updatedDate | formatMediumDatetime }}</td>
+          <td>{{ receipient.deletedDate | formatMediumDatetime }}</td>
+          <td>
+            {{ receipient.userId?.id }}
+          </td>
+          <td>
+            <div *ngIf="receipient.organizationId">
+              <a [routerLink]="['/organization', receipient.organizationId?.id, 'view']">{{ receipient.organizationId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="receipient.managedOrganiztionId">
+              <a [routerLink]="['/organization', receipient.managedOrganiztionId?.id, 'view']">{{ receipient.managedOrganiztionId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ receipient.createdUserId?.id }}
+          </td>
+          <td>
+            <div *ngIf="receipient.createdUserOrgId">
+              <a [routerLink]="['/organization', receipient.createdUserOrgId?.id, 'view']">{{ receipient.createdUserOrgId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ receipient.approvedUserId?.id }}
+          </td>
+          <td>
+            <div *ngIf="receipient.approvedUserOrgId">
+              <a [routerLink]="['/organization', receipient.approvedUserOrgId?.id, 'view']">{{ receipient.approvedUserOrgId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ receipient.rejectedUserId?.id }}
+          </td>
+          <td>
+            <div *ngIf="receipient.rejectedUserOrgId">
+              <a [routerLink]="['/organization', receipient.rejectedUserOrgId?.id, 'view']">{{ receipient.rejectedUserOrgId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/receipient', receipient.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/receipient', receipient.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(receipient)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

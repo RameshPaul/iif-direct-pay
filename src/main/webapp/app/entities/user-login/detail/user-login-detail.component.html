@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userLogin">
+      <h2 data-cy="userLoginDetailsHeading"><span jhiTranslate="iifDirectPayApp.userLogin.detail.title">User Login</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userLogin.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.loginType">Login Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserLoginType.' + userLogin.loginType }}">{{ userLogin.loginType }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.emailOTP">Email OTP</span></dt>
+        <dd>
+          <span>{{ userLogin.emailOTP }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.phoneOTP">Phone OTP</span></dt>
+        <dd>
+          <span>{{ userLogin.phoneOTP }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.emailOTPExpiryDate">Email OTP Expiry Date</span></dt>
+        <dd>
+          <span>{{ userLogin.emailOTPExpiryDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.phoneOTPExpiryDate">Phone OTP Expiry Date</span></dt>
+        <dd>
+          <span>{{ userLogin.phoneOTPExpiryDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.locationIP">Location IP</span></dt>
+        <dd>
+          <span>{{ userLogin.locationIP }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.locationDetails">Location Details</span></dt>
+        <dd>
+          <span>{{ userLogin.locationDetails }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.latlog">Latlog</span></dt>
+        <dd>
+          <span>{{ userLogin.latlog }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.browser">Browser</span></dt>
+        <dd>
+          <span>{{ userLogin.browser }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.device">Device</span></dt>
+        <dd>
+          <span>{{ userLogin.device }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.loginDateTime">Login Date Time</span></dt>
+        <dd>
+          <span>{{ userLogin.loginDateTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.loginToken">Login Token</span></dt>
+        <dd>
+          <span>{{ userLogin.loginToken }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ userLogin.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ userLogin.updatedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userLogin.userId">User Id</span></dt>
+        <dd>
+          <span>{{ userLogin.userId?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-login', userLogin.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

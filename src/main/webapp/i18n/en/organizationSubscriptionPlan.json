@@ -1,0 +1,40 @@
+{
+  "iifDirectPayApp": {
+    "organizationSubscriptionPlan": {
+      "home": {
+        "title": "Organization Subscription Plans",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Organization Subscription Plan",
+        "createOrEditLabel": "Create or edit a Organization Subscription Plan",
+        "notFound": "No Organization Subscription Plans found"
+      },
+      "created": "A new Organization Subscription Plan is created with identifier {{ param }}",
+      "updated": "A Organization Subscription Plan is updated with identifier {{ param }}",
+      "deleted": "A Organization Subscription Plan is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Organization Subscription Plan {{ id }}?"
+      },
+      "detail": {
+        "title": "Organization Subscription Plan"
+      },
+      "id": "ID",
+      "subscriptionName": "Subscription Name",
+      "subscriptionTitle": "Subscription Title",
+      "subscriptionType": "Subscription Type",
+      "subscriptionPrice": "Subscription Price",
+      "subscriptionQuantity": "Subscription Quantity",
+      "subscriptionPeriod": "Subscription Period",
+      "subscriptionTerms": "Subscription Terms",
+      "couponCode": "Coupon Code",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "suspendedDate": "Suspended Date",
+      "deletedDate": "Deleted Date",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "organizationId": "Organization Id",
+      "subscriptionId": "Subscription Id"
+    }
+  }
+}

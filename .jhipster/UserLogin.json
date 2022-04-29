@@ -1,0 +1,85 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429144659",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "user_login",
+  "fields": [
+    {
+      "fieldName": "loginType",
+      "fieldType": "UserLoginType",
+      "fieldValues": "EMAIL,PHONE"
+    },
+    {
+      "fieldName": "emailOTP",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneOTP",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailOTPExpiryDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "phoneOTPExpiryDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "locationIP",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "locationDetails",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "latlog",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "browser",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "device",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "loginDateTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "loginToken",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "UserLogin",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userLogin",
+      "relationshipName": "userId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

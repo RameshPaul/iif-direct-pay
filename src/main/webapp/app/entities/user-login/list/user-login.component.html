@@ -1,0 +1,108 @@
+<div>
+  <h2 id="page-heading" data-cy="UserLoginHeading">
+    <span jhiTranslate="iifDirectPayApp.userLogin.home.title">User Logins</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.userLogin.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-user-login"
+        [routerLink]="['/user-login/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.userLogin.home.createLabel"> Create a new User Login </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="userLogins?.length === 0">
+    <span jhiTranslate="iifDirectPayApp.userLogin.home.notFound">No userLogins found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="userLogins && userLogins.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.loginType">Login Type</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.emailOTP">Email OTP</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.phoneOTP">Phone OTP</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.emailOTPExpiryDate">Email OTP Expiry Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.phoneOTPExpiryDate">Phone OTP Expiry Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.locationIP">Location IP</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.locationDetails">Location Details</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.latlog">Latlog</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.browser">Browser</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.device">Device</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.loginDateTime">Login Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.loginToken">Login Token</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userLogin.userId">User Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userLogin of userLogins; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/user-login', userLogin.id, 'view']">{{ userLogin.id }}</a>
+          </td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserLoginType.' + userLogin.loginType }}">{{ userLogin.loginType }}</td>
+          <td>{{ userLogin.emailOTP }}</td>
+          <td>{{ userLogin.phoneOTP }}</td>
+          <td>{{ userLogin.emailOTPExpiryDate | formatMediumDate }}</td>
+          <td>{{ userLogin.phoneOTPExpiryDate | formatMediumDate }}</td>
+          <td>{{ userLogin.locationIP }}</td>
+          <td>{{ userLogin.locationDetails }}</td>
+          <td>{{ userLogin.latlog }}</td>
+          <td>{{ userLogin.browser }}</td>
+          <td>{{ userLogin.device }}</td>
+          <td>{{ userLogin.loginDateTime | formatMediumDatetime }}</td>
+          <td>{{ userLogin.loginToken }}</td>
+          <td>{{ userLogin.createdDate | formatMediumDatetime }}</td>
+          <td>{{ userLogin.updatedDate | formatMediumDatetime }}</td>
+          <td>
+            {{ userLogin.userId?.id }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/user-login', userLogin.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/user-login', userLogin.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(userLogin)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "एंटिटीज़",
+        "subscriptionPlan": "Subscription Plan",
+        "organization": "Organization",
+        "organizationSubscriptionPlan": "Organization Subscription Plan",
+        "userOrganization": "User Organization",
+        "userLogin": "User Login",
+        "userDevice": "User Device",
+        "userAccount": "User Account",
+        "receipient": "Receipient",
+        "receipientRecurring": "Receipient Recurring",
+        "patron": "Patron",
+        "payment": "Payment",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

@@ -1,0 +1,10 @@
+{
+  "iifDirectPayApp": {
+    "UserAccountType": {
+      "null": "",
+      "UPI": "UPI",
+      "BANK": "BANK",
+      "WALLET": "WALLET"
+    }
+  }
+}

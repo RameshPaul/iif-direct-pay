@@ -1,0 +1,139 @@
+<div>
+  <h2 id="page-heading" data-cy="OrganizationSubscriptionPlanHeading">
+    <span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.home.title">Organization Subscription Plans</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-organization-subscription-plan"
+        [routerLink]="['/organization-subscription-plan/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.home.createLabel">
+          Create a new Organization Subscription Plan
+        </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="organizationSubscriptionPlans?.length === 0">
+    <span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.home.notFound">No organizationSubscriptionPlans found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="organizationSubscriptionPlans && organizationSubscriptionPlans.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionName">Subscription Name</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionTitle">Subscription Title</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionType">Subscription Type</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionPrice">Subscription Price</span></th>
+          <th scope="col">
+            <span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionQuantity">Subscription Quantity</span>
+          </th>
+          <th scope="col">
+            <span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionPeriod">Subscription Period</span>
+          </th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionTerms">Subscription Terms</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.couponCode">Coupon Code</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.startDate">Start Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.endDate">End Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.suspendedDate">Suspended Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.deletedDate">Deleted Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.status">Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.organizationId">Organization Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organizationSubscriptionPlan.subscriptionId">Subscription Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let organizationSubscriptionPlan of organizationSubscriptionPlans; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/organization-subscription-plan', organizationSubscriptionPlan.id, 'view']">{{
+              organizationSubscriptionPlan.id
+            }}</a>
+          </td>
+          <td>{{ organizationSubscriptionPlan.subscriptionName }}</td>
+          <td>{{ organizationSubscriptionPlan.subscriptionTitle }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.SubscriptionType.' + organizationSubscriptionPlan.subscriptionType }}">
+            {{ organizationSubscriptionPlan.subscriptionType }}
+          </td>
+          <td>{{ organizationSubscriptionPlan.subscriptionPrice }}</td>
+          <td>{{ organizationSubscriptionPlan.subscriptionQuantity }}</td>
+          <td>{{ organizationSubscriptionPlan.subscriptionPeriod }}</td>
+          <td>{{ organizationSubscriptionPlan.subscriptionTerms }}</td>
+          <td>{{ organizationSubscriptionPlan.couponCode }}</td>
+          <td>{{ organizationSubscriptionPlan.startDate | formatMediumDate }}</td>
+          <td>{{ organizationSubscriptionPlan.endDate | formatMediumDate }}</td>
+          <td>{{ organizationSubscriptionPlan.suspendedDate | formatMediumDatetime }}</td>
+          <td>{{ organizationSubscriptionPlan.deletedDate | formatMediumDatetime }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.SubscriptionStatus.' + organizationSubscriptionPlan.status }}">
+            {{ organizationSubscriptionPlan.status }}
+          </td>
+          <td>{{ organizationSubscriptionPlan.createdDate | formatMediumDatetime }}</td>
+          <td>{{ organizationSubscriptionPlan.updatedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="organizationSubscriptionPlan.organizationId">
+              <a [routerLink]="['/organization', organizationSubscriptionPlan.organizationId?.id, 'view']">{{
+                organizationSubscriptionPlan.organizationId?.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="organizationSubscriptionPlan.subscriptionId">
+              <a [routerLink]="['/subscription-plan', organizationSubscriptionPlan.subscriptionId?.id, 'view']">{{
+                organizationSubscriptionPlan.subscriptionId?.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/organization-subscription-plan', organizationSubscriptionPlan.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/organization-subscription-plan', organizationSubscriptionPlan.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button
+                type="submit"
+                (click)="delete(organizationSubscriptionPlan)"
+                class="btn btn-danger btn-sm"
+                data-cy="entityDeleteButton"
+              >
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

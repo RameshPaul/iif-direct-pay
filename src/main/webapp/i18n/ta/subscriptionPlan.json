@@ -1,0 +1,33 @@
+{
+  "iifDirectPayApp": {
+    "subscriptionPlan": {
+      "home": {
+        "title": "Subscription Plans",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Subscription Plan-ஐ உருவாக்கு",
+        "createOrEditLabel": "Subscription Plan -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No Subscription Plans found"
+      },
+      "created": "Subscription Plan புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "Subscription Plan மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A Subscription Plan நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் Subscription Plan {{ id }}?"
+      },
+      "detail": {
+        "title": "Subscription Plan"
+      },
+      "id": "ID",
+      "subscriptionName": "Subscription Name",
+      "subscriptionTitle": "Subscription Title",
+      "subscriptionType": "Subscription Type",
+      "subscriptionPrice": "Subscription Price",
+      "subscriptionQuantity": "Subscription Quantity",
+      "subscriptionPeriod": "Subscription Period",
+      "subscriptionTerms": "Subscription Terms",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date"
+    }
+  }
+}

@@ -1,0 +1,278 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-receipient-recurring-heading"
+        data-cy="ReceipientRecurringCreateUpdateHeading"
+        jhiTranslate="iifDirectPayApp.receipientRecurring.home.createOrEditLabel"
+      >
+        Create or edit a Receipient Recurring
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.recurringPeriod" for="field_recurringPeriod"
+            >Recurring Period</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="recurringPeriod"
+            id="field_recurringPeriod"
+            data-cy="recurringPeriod"
+            formControlName="recurringPeriod"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.startDate" for="field_startDate">Start Date</label>
+          <div class="input-group">
+            <input
+              id="field_startDate"
+              data-cy="startDate"
+              type="text"
+              class="form-control"
+              name="startDate"
+              ngbDatepicker
+              #startDateDp="ngbDatepicker"
+              formControlName="startDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.endDate" for="field_endDate">End Date</label>
+          <div class="input-group">
+            <input
+              id="field_endDate"
+              data-cy="endDate"
+              type="text"
+              class="form-control"
+              name="endDate"
+              ngbDatepicker
+              #endDateDp="ngbDatepicker"
+              formControlName="endDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.amountRequisite" for="field_amountRequisite"
+            >Amount Requisite</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountRequisite"
+            id="field_amountRequisite"
+            data-cy="amountRequisite"
+            formControlName="amountRequisite"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.amountPatronCommited" for="field_amountPatronCommited"
+            >Amount Patron Commited</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountPatronCommited"
+            id="field_amountPatronCommited"
+            data-cy="amountPatronCommited"
+            formControlName="amountPatronCommited"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.amountReceived" for="field_amountReceived"
+            >Amount Received</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountReceived"
+            id="field_amountReceived"
+            data-cy="amountReceived"
+            formControlName="amountReceived"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.amountBalance" for="field_amountBalance"
+            >Amount Balance</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="amountBalance"
+            id="field_amountBalance"
+            data-cy="amountBalance"
+            formControlName="amountBalance"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.totalPatrons" for="field_totalPatrons"
+            >Total Patrons</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalPatrons"
+            id="field_totalPatrons"
+            data-cy="totalPatrons"
+            formControlName="totalPatrons"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.detailsText" for="field_detailsText"
+            >Details Text</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="detailsText"
+            id="field_detailsText"
+            data-cy="detailsText"
+            formControlName="detailsText"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.ReceipientRecurringStatus.null' | translate }}</option>
+            <option *ngFor="let receipientRecurringStatus of receipientRecurringStatusValues" [value]="receipientRecurringStatus">
+              {{ 'iifDirectPayApp.ReceipientRecurringStatus.' + receipientRecurringStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.pauseDate" for="field_pauseDate">Pause Date</label>
+          <div class="input-group">
+            <input
+              id="field_pauseDate"
+              data-cy="pauseDate"
+              type="text"
+              class="form-control"
+              name="pauseDate"
+              ngbDatepicker
+              #pauseDateDp="ngbDatepicker"
+              formControlName="pauseDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="pauseDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.resumeDate" for="field_resumeDate">Resume Date</label>
+          <div class="input-group">
+            <input
+              id="field_resumeDate"
+              data-cy="resumeDate"
+              type="text"
+              class="form-control"
+              name="resumeDate"
+              ngbDatepicker
+              #resumeDateDp="ngbDatepicker"
+              formControlName="resumeDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="resumeDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.createdDate" for="field_createdDate"
+            >Created Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.updatedDate" for="field_updatedDate"
+            >Updated Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="updatedDate"
+              formControlName="updatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.receipientId" for="field_receipientId"
+            >Receipient Id</label
+          >
+          <select class="form-control" id="field_receipientId" data-cy="receipientId" name="receipientId" formControlName="receipientId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                receipientOption.id === editForm.get('receipientId')!.value?.id ? editForm.get('receipientId')!.value : receipientOption
+              "
+              *ngFor="let receipientOption of receipientsSharedCollection; trackBy: trackReceipientById"
+            >
+              {{ receipientOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.receipientRecurring.userId" for="field_userId">User Id</label>
+          <select class="form-control" id="field_userId" data-cy="userId" name="userId" formControlName="userId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('userId')!.value?.id ? editForm.get('userId')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

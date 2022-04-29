@@ -1,0 +1,38 @@
+{
+  "iifDirectPayApp": {
+    "userLogin": {
+      "home": {
+        "title": "User Logins",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "User Login-ஐ உருவாக்கு",
+        "createOrEditLabel": "User Login -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No User Logins found"
+      },
+      "created": "User Login புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "User Login மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A User Login நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் User Login {{ id }}?"
+      },
+      "detail": {
+        "title": "User Login"
+      },
+      "id": "ID",
+      "loginType": "Login Type",
+      "emailOTP": "Email OTP",
+      "phoneOTP": "Phone OTP",
+      "emailOTPExpiryDate": "Email OTP Expiry Date",
+      "phoneOTPExpiryDate": "Phone OTP Expiry Date",
+      "locationIP": "Location IP",
+      "locationDetails": "Location Details",
+      "latlog": "Latlog",
+      "browser": "Browser",
+      "device": "Device",
+      "loginDateTime": "Login Date Time",
+      "loginToken": "Login Token",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "userId": "User Id"
+    }
+  }
+}

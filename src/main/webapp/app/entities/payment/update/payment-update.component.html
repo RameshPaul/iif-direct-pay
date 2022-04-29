@@ -1,0 +1,709 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-payment-heading" data-cy="PaymentCreateUpdateHeading" jhiTranslate="iifDirectPayApp.payment.home.createOrEditLabel">
+        Create or edit a Payment
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.recurringPeriod" for="field_recurringPeriod"
+            >Recurring Period</label
+          >
+          <div class="input-group">
+            <input
+              id="field_recurringPeriod"
+              data-cy="recurringPeriod"
+              type="text"
+              class="form-control"
+              name="recurringPeriod"
+              ngbDatepicker
+              #recurringPeriodDp="ngbDatepicker"
+              formControlName="recurringPeriod"
+            />
+            <button type="button" class="btn btn-secondary" (click)="recurringPeriodDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.amount" for="field_amount">Amount</label>
+          <input type="number" class="form-control" name="amount" id="field_amount" data-cy="amount" formControlName="amount" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.transactionId" for="field_transactionId">Transaction Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="transactionId"
+            id="field_transactionId"
+            data-cy="transactionId"
+            formControlName="transactionId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentType" for="field_paymentType">Payment Type</label>
+          <select class="form-control" name="paymentType" formControlName="paymentType" id="field_paymentType" data-cy="paymentType">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.PaymentType.null' | translate }}</option>
+            <option *ngFor="let paymentType of paymentTypeValues" [value]="paymentType">
+              {{ 'iifDirectPayApp.PaymentType.' + paymentType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentSource" for="field_paymentSource">Payment Source</label>
+          <select
+            class="form-control"
+            name="paymentSource"
+            formControlName="paymentSource"
+            id="field_paymentSource"
+            data-cy="paymentSource"
+          >
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserAccountType.null' | translate }}</option>
+            <option *ngFor="let userAccountType of userAccountTypeValues" [value]="userAccountType">
+              {{ 'iifDirectPayApp.UserAccountType.' + userAccountType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentStatus" for="field_paymentStatus">Payment Status</label>
+          <select
+            class="form-control"
+            name="paymentStatus"
+            formControlName="paymentStatus"
+            id="field_paymentStatus"
+            data-cy="paymentStatus"
+          >
+            <option [ngValue]="null">{{ 'iifDirectPayApp.PaymentStatus.null' | translate }}</option>
+            <option *ngFor="let paymentStatus of paymentStatusValues" [value]="paymentStatus">
+              {{ 'iifDirectPayApp.PaymentStatus.' + paymentStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentStatusDetails" for="field_paymentStatusDetails"
+            >Payment Status Details</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="paymentStatusDetails"
+            id="field_paymentStatusDetails"
+            data-cy="paymentStatusDetails"
+            formControlName="paymentStatusDetails"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentStartDateTime" for="field_paymentStartDateTime"
+            >Payment Start Date Time</label
+          >
+          <div class="input-group">
+            <input
+              id="field_paymentStartDateTime"
+              data-cy="paymentStartDateTime"
+              type="text"
+              class="form-control"
+              name="paymentStartDateTime"
+              ngbDatepicker
+              #paymentStartDateTimeDp="ngbDatepicker"
+              formControlName="paymentStartDateTime"
+            />
+            <button type="button" class="btn btn-secondary" (click)="paymentStartDateTimeDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentCompleteDateTime" for="field_paymentCompleteDateTime"
+            >Payment Complete Date Time</label
+          >
+          <div class="input-group">
+            <input
+              id="field_paymentCompleteDateTime"
+              data-cy="paymentCompleteDateTime"
+              type="text"
+              class="form-control"
+              name="paymentCompleteDateTime"
+              ngbDatepicker
+              #paymentCompleteDateTimeDp="ngbDatepicker"
+              formControlName="paymentCompleteDateTime"
+            />
+            <button type="button" class="btn btn-secondary" (click)="paymentCompleteDateTimeDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentFailureDateTime" for="field_paymentFailureDateTime"
+            >Payment Failure Date Time</label
+          >
+          <div class="input-group">
+            <input
+              id="field_paymentFailureDateTime"
+              data-cy="paymentFailureDateTime"
+              type="text"
+              class="form-control"
+              name="paymentFailureDateTime"
+              ngbDatepicker
+              #paymentFailureDateTimeDp="ngbDatepicker"
+              formControlName="paymentFailureDateTime"
+            />
+            <button type="button" class="btn btn-secondary" (click)="paymentFailureDateTimeDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.patronComment" for="field_patronComment">Patron Comment</label>
+          <input
+            type="text"
+            class="form-control"
+            name="patronComment"
+            id="field_patronComment"
+            data-cy="patronComment"
+            formControlName="patronComment"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.isAutoPay" for="field_isAutoPay">Is Auto Pay</label>
+          <input type="checkbox" class="form-check" name="isAutoPay" id="field_isAutoPay" data-cy="isAutoPay" formControlName="isAutoPay" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentDestinationSource" for="field_paymentDestinationSource"
+            >Payment Destination Source</label
+          >
+          <select
+            class="form-control"
+            name="paymentDestinationSource"
+            formControlName="paymentDestinationSource"
+            id="field_paymentDestinationSource"
+            data-cy="paymentDestinationSource"
+          >
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserAccountType.null' | translate }}</option>
+            <option *ngFor="let userAccountType of userAccountTypeValues" [value]="userAccountType">
+              {{ 'iifDirectPayApp.UserAccountType.' + userAccountType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentReceivedDateTIme" for="field_paymentReceivedDateTIme"
+            >Payment Received Date T Ime</label
+          >
+          <div class="input-group">
+            <input
+              id="field_paymentReceivedDateTIme"
+              data-cy="paymentReceivedDateTIme"
+              type="text"
+              class="form-control"
+              name="paymentReceivedDateTIme"
+              ngbDatepicker
+              #paymentReceivedDateTImeDp="ngbDatepicker"
+              formControlName="paymentReceivedDateTIme"
+            />
+            <button type="button" class="btn btn-secondary" (click)="paymentReceivedDateTImeDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentReceivedStatus" for="field_paymentReceivedStatus"
+            >Payment Received Status</label
+          >
+          <select
+            class="form-control"
+            name="paymentReceivedStatus"
+            formControlName="paymentReceivedStatus"
+            id="field_paymentReceivedStatus"
+            data-cy="paymentReceivedStatus"
+          >
+            <option [ngValue]="null">{{ 'iifDirectPayApp.PaymentStatus.null' | translate }}</option>
+            <option *ngFor="let paymentStatus of paymentStatusValues" [value]="paymentStatus">
+              {{ 'iifDirectPayApp.PaymentStatus.' + paymentStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentReceivedDetails" for="field_paymentReceivedDetails"
+            >Payment Received Details</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="paymentReceivedDetails"
+            id="field_paymentReceivedDetails"
+            data-cy="paymentReceivedDetails"
+            formControlName="paymentReceivedDetails"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentRefundedDateTime" for="field_paymentRefundedDateTime"
+            >Payment Refunded Date Time</label
+          >
+          <div class="input-group">
+            <input
+              id="field_paymentRefundedDateTime"
+              data-cy="paymentRefundedDateTime"
+              type="text"
+              class="form-control"
+              name="paymentRefundedDateTime"
+              ngbDatepicker
+              #paymentRefundedDateTimeDp="ngbDatepicker"
+              formControlName="paymentRefundedDateTime"
+            />
+            <button type="button" class="btn btn-secondary" (click)="paymentRefundedDateTimeDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.userComment" for="field_userComment">User Comment</label>
+          <input
+            type="text"
+            class="form-control"
+            name="userComment"
+            id="field_userComment"
+            data-cy="userComment"
+            formControlName="userComment"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.flaggedDateTime" for="field_flaggedDateTime"
+            >Flagged Date Time</label
+          >
+          <div class="input-group">
+            <input
+              id="field_flaggedDateTime"
+              data-cy="flaggedDateTime"
+              type="text"
+              class="form-control"
+              name="flaggedDateTime"
+              ngbDatepicker
+              #flaggedDateTimeDp="ngbDatepicker"
+              formControlName="flaggedDateTime"
+            />
+            <button type="button" class="btn btn-secondary" (click)="flaggedDateTimeDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.flagDetails" for="field_flagDetails">Flag Details</label>
+          <input
+            type="text"
+            class="form-control"
+            name="flagDetails"
+            id="field_flagDetails"
+            data-cy="flagDetails"
+            formControlName="flagDetails"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.flaggedEmailId" for="field_flaggedEmailId"
+            >Flagged Email Id</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="flaggedEmailId"
+            id="field_flaggedEmailId"
+            data-cy="flaggedEmailId"
+            formControlName="flaggedEmailId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.flaggedAmount" for="field_flaggedAmount">Flagged Amount</label>
+          <input
+            type="number"
+            class="form-control"
+            name="flaggedAmount"
+            id="field_flaggedAmount"
+            data-cy="flaggedAmount"
+            formControlName="flaggedAmount"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.flagCreatedDateTime" for="field_flagCreatedDateTime"
+            >Flag Created Date Time</label
+          >
+          <div class="input-group">
+            <input
+              id="field_flagCreatedDateTime"
+              data-cy="flagCreatedDateTime"
+              type="text"
+              class="form-control"
+              name="flagCreatedDateTime"
+              ngbDatepicker
+              #flagCreatedDateTimeDp="ngbDatepicker"
+              formControlName="flagCreatedDateTime"
+            />
+            <button type="button" class="btn btn-secondary" (click)="flagCreatedDateTimeDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.isRecurringPayment" for="field_isRecurringPayment"
+            >Is Recurring Payment</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isRecurringPayment"
+            id="field_isRecurringPayment"
+            data-cy="isRecurringPayment"
+            formControlName="isRecurringPayment"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.transactionDetails" for="field_transactionDetails"
+            >Transaction Details</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="transactionDetails"
+            id="field_transactionDetails"
+            data-cy="transactionDetails"
+            formControlName="transactionDetails"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.updatedDate" for="field_updatedDate">Updated Date</label>
+          <div class="d-flex">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="updatedDate"
+              formControlName="updatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.patronId" for="field_patronId">Patron Id</label>
+          <select class="form-control" id="field_patronId" data-cy="patronId" name="patronId" formControlName="patronId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="patronOption.id === editForm.get('patronId')!.value?.id ? editForm.get('patronId')!.value : patronOption"
+              *ngFor="let patronOption of patronsSharedCollection; trackBy: trackPatronById"
+            >
+              {{ patronOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.patronUserId" for="field_patronUserId">Patron User Id</label>
+          <select class="form-control" id="field_patronUserId" data-cy="patronUserId" name="patronUserId" formControlName="patronUserId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('patronUserId')!.value?.id ? editForm.get('patronUserId')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.patronUserOrgId" for="field_patronUserOrgId"
+            >Patron User Org Id</label
+          >
+          <select
+            class="form-control"
+            id="field_patronUserOrgId"
+            data-cy="patronUserOrgId"
+            name="patronUserOrgId"
+            formControlName="patronUserOrgId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                organizationOption.id === editForm.get('patronUserOrgId')!.value?.id
+                  ? editForm.get('patronUserOrgId')!.value
+                  : organizationOption
+              "
+              *ngFor="let organizationOption of organizationsSharedCollection; trackBy: trackOrganizationById"
+            >
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.receipientId" for="field_receipientId">Receipient Id</label>
+          <select class="form-control" id="field_receipientId" data-cy="receipientId" name="receipientId" formControlName="receipientId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                receipientOption.id === editForm.get('receipientId')!.value?.id ? editForm.get('receipientId')!.value : receipientOption
+              "
+              *ngFor="let receipientOption of receipientsSharedCollection; trackBy: trackReceipientById"
+            >
+              {{ receipientOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.receipientUserId" for="field_receipientUserId"
+            >Receipient User Id</label
+          >
+          <select
+            class="form-control"
+            id="field_receipientUserId"
+            data-cy="receipientUserId"
+            name="receipientUserId"
+            formControlName="receipientUserId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                userOption.id === editForm.get('receipientUserId')!.value?.id ? editForm.get('receipientUserId')!.value : userOption
+              "
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.receipientUserOrgId" for="field_receipientUserOrgId"
+            >Receipient User Org Id</label
+          >
+          <select
+            class="form-control"
+            id="field_receipientUserOrgId"
+            data-cy="receipientUserOrgId"
+            name="receipientUserOrgId"
+            formControlName="receipientUserOrgId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                organizationOption.id === editForm.get('receipientUserOrgId')!.value?.id
+                  ? editForm.get('receipientUserOrgId')!.value
+                  : organizationOption
+              "
+              *ngFor="let organizationOption of organizationsSharedCollection; trackBy: trackOrganizationById"
+            >
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.paymentSourceAccountId" for="field_paymentSourceAccountId"
+            >Payment Source Account Id</label
+          >
+          <select
+            class="form-control"
+            id="field_paymentSourceAccountId"
+            data-cy="paymentSourceAccountId"
+            name="paymentSourceAccountId"
+            formControlName="paymentSourceAccountId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                userAccountOption.id === editForm.get('paymentSourceAccountId')!.value?.id
+                  ? editForm.get('paymentSourceAccountId')!.value
+                  : userAccountOption
+              "
+              *ngFor="let userAccountOption of userAccountsSharedCollection; trackBy: trackUserAccountById"
+            >
+              {{ userAccountOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="iifDirectPayApp.payment.paymentDestinationAccountId"
+            for="field_paymentDestinationAccountId"
+            >Payment Destination Account Id</label
+          >
+          <select
+            class="form-control"
+            id="field_paymentDestinationAccountId"
+            data-cy="paymentDestinationAccountId"
+            name="paymentDestinationAccountId"
+            formControlName="paymentDestinationAccountId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                userAccountOption.id === editForm.get('paymentDestinationAccountId')!.value?.id
+                  ? editForm.get('paymentDestinationAccountId')!.value
+                  : userAccountOption
+              "
+              *ngFor="let userAccountOption of userAccountsSharedCollection; trackBy: trackUserAccountById"
+            >
+              {{ userAccountOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.flaggedUserId" for="field_flaggedUserId">Flagged User Id</label>
+          <select
+            class="form-control"
+            id="field_flaggedUserId"
+            data-cy="flaggedUserId"
+            name="flaggedUserId"
+            formControlName="flaggedUserId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('flaggedUserId')!.value?.id ? editForm.get('flaggedUserId')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.flaggedUserOrgId" for="field_flaggedUserOrgId"
+            >Flagged User Org Id</label
+          >
+          <select
+            class="form-control"
+            id="field_flaggedUserOrgId"
+            data-cy="flaggedUserOrgId"
+            name="flaggedUserOrgId"
+            formControlName="flaggedUserOrgId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                organizationOption.id === editForm.get('flaggedUserOrgId')!.value?.id
+                  ? editForm.get('flaggedUserOrgId')!.value
+                  : organizationOption
+              "
+              *ngFor="let organizationOption of organizationsSharedCollection; trackBy: trackOrganizationById"
+            >
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.flagClearedUserId" for="field_flagClearedUserId"
+            >Flag Cleared User Id</label
+          >
+          <select
+            class="form-control"
+            id="field_flagClearedUserId"
+            data-cy="flagClearedUserId"
+            name="flagClearedUserId"
+            formControlName="flagClearedUserId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                userOption.id === editForm.get('flagClearedUserId')!.value?.id ? editForm.get('flagClearedUserId')!.value : userOption
+              "
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.payment.flagClearedUserOrgId" for="field_flagClearedUserOrgId"
+            >Flag Cleared User Org Id</label
+          >
+          <select
+            class="form-control"
+            id="field_flagClearedUserOrgId"
+            data-cy="flagClearedUserOrgId"
+            name="flagClearedUserOrgId"
+            formControlName="flagClearedUserOrgId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                organizationOption.id === editForm.get('flagClearedUserOrgId')!.value?.id
+                  ? editForm.get('flagClearedUserOrgId')!.value
+                  : organizationOption
+              "
+              *ngFor="let organizationOption of organizationsSharedCollection; trackBy: trackOrganizationById"
+            >
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
