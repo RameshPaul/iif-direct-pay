@@ -1,0 +1,32 @@
+{
+  "iifDirectPayApp": {
+    "userOrganization": {
+      "home": {
+        "title": "User Organizations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Organization",
+        "createOrEditLabel": "Create or edit a User Organization",
+        "notFound": "No User Organizations found"
+      },
+      "created": "A new User Organization is created with identifier {{ param }}",
+      "updated": "A User Organization is updated with identifier {{ param }}",
+      "deleted": "A User Organization is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Organization {{ id }}?"
+      },
+      "detail": {
+        "title": "User Organization"
+      },
+      "id": "ID",
+      "joiningDate": "Joining Date",
+      "exitDate": "Exit Date",
+      "status": "Status",
+      "suspendedDate": "Suspended Date",
+      "deletedDate": "Deleted Date",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "organiationId": "Organiation Id",
+      "userId": "User Id"
+    }
+  }
+}

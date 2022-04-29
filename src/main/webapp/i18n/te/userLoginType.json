@@ -1,0 +1,9 @@
+{
+  "iifDirectPayApp": {
+    "UserLoginType": {
+      "null": "",
+      "EMAIL": "EMAIL",
+      "PHONE": "PHONE"
+    }
+  }
+}

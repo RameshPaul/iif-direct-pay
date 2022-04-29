@@ -1,0 +1,112 @@
+<div>
+  <h2 id="page-heading" data-cy="UserDeviceHeading">
+    <span jhiTranslate="iifDirectPayApp.userDevice.home.title">User Devices</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.userDevice.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-user-device"
+        [routerLink]="['/user-device/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.userDevice.home.createLabel"> Create a new User Device </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="userDevices?.length === 0">
+    <span jhiTranslate="iifDirectPayApp.userDevice.home.notFound">No userDevices found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="userDevices && userDevices.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.deviceName">Device Name</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.deviceId">Device Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.deviceToken">Device Token</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.deviceType">Device Type</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.deviceOS">Device OS</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.notificationEnabled">Notification Enabled</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.lastActivityDetails">Last Activity Details</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.lastActiveDate">Last Active Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.lastActiveLocation">Last Active Location</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.appVersion">App Version</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.forceLogin">Force Login</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.status">Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.loginDateTime">Login Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.exitDate">Exit Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.userDevice.userId">User Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userDevice of userDevices; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/user-device', userDevice.id, 'view']">{{ userDevice.id }}</a>
+          </td>
+          <td>{{ userDevice.deviceName }}</td>
+          <td>{{ userDevice.deviceId }}</td>
+          <td>{{ userDevice.deviceToken }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserDeviceType.' + userDevice.deviceType }}">{{ userDevice.deviceType }}</td>
+          <td>{{ userDevice.deviceOS }}</td>
+          <td>{{ userDevice.notificationEnabled }}</td>
+          <td>{{ userDevice.lastActivityDetails }}</td>
+          <td>{{ userDevice.lastActiveDate | formatMediumDate }}</td>
+          <td>{{ userDevice.lastActiveLocation }}</td>
+          <td>{{ userDevice.appVersion }}</td>
+          <td>{{ userDevice.forceLogin }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserDeviceStatus.' + userDevice.status }}">{{ userDevice.status }}</td>
+          <td>{{ userDevice.loginDateTime | formatMediumDatetime }}</td>
+          <td>{{ userDevice.exitDate | formatMediumDatetime }}</td>
+          <td>{{ userDevice.createdDate | formatMediumDatetime }}</td>
+          <td>{{ userDevice.updatedDate | formatMediumDatetime }}</td>
+          <td>
+            {{ userDevice.userId?.id }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/user-device', userDevice.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/user-device', userDevice.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(userDevice)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

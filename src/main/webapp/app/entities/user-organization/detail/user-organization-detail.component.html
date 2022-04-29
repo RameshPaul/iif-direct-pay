@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userOrganization">
+      <h2 data-cy="userOrganizationDetailsHeading">
+        <span jhiTranslate="iifDirectPayApp.userOrganization.detail.title">User Organization</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userOrganization.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userOrganization.joiningDate">Joining Date</span></dt>
+        <dd>
+          <span>{{ userOrganization.joiningDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userOrganization.exitDate">Exit Date</span></dt>
+        <dd>
+          <span>{{ userOrganization.exitDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userOrganization.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserOrganizationStatus.' + userOrganization.status }}">{{
+            userOrganization.status
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userOrganization.suspendedDate">Suspended Date</span></dt>
+        <dd>
+          <span>{{ userOrganization.suspendedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userOrganization.deletedDate">Deleted Date</span></dt>
+        <dd>
+          <span>{{ userOrganization.deletedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userOrganization.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ userOrganization.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userOrganization.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ userOrganization.updatedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userOrganization.organiationId">Organiation Id</span></dt>
+        <dd>
+          <div *ngIf="userOrganization.organiationId">
+            <a [routerLink]="['/organization', userOrganization.organiationId?.id, 'view']">{{ userOrganization.organiationId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userOrganization.userId">User Id</span></dt>
+        <dd>
+          <span>{{ userOrganization.userId?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-organization', userOrganization.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

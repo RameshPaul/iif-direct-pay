@@ -1,0 +1,184 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-user-organization-heading"
+        data-cy="UserOrganizationCreateUpdateHeading"
+        jhiTranslate="iifDirectPayApp.userOrganization.home.createOrEditLabel"
+      >
+        Create or edit a User Organization
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userOrganization.joiningDate" for="field_joiningDate">Joining Date</label>
+          <div class="input-group">
+            <input
+              id="field_joiningDate"
+              data-cy="joiningDate"
+              type="text"
+              class="form-control"
+              name="joiningDate"
+              ngbDatepicker
+              #joiningDateDp="ngbDatepicker"
+              formControlName="joiningDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="joiningDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userOrganization.exitDate" for="field_exitDate">Exit Date</label>
+          <div class="input-group">
+            <input
+              id="field_exitDate"
+              data-cy="exitDate"
+              type="text"
+              class="form-control"
+              name="exitDate"
+              ngbDatepicker
+              #exitDateDp="ngbDatepicker"
+              formControlName="exitDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="exitDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userOrganization.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserOrganizationStatus.null' | translate }}</option>
+            <option *ngFor="let userOrganizationStatus of userOrganizationStatusValues" [value]="userOrganizationStatus">
+              {{ 'iifDirectPayApp.UserOrganizationStatus.' + userOrganizationStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userOrganization.suspendedDate" for="field_suspendedDate"
+            >Suspended Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_suspendedDate"
+              data-cy="suspendedDate"
+              type="datetime-local"
+              class="form-control"
+              name="suspendedDate"
+              formControlName="suspendedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userOrganization.deletedDate" for="field_deletedDate">Deleted Date</label>
+          <div class="d-flex">
+            <input
+              id="field_deletedDate"
+              data-cy="deletedDate"
+              type="datetime-local"
+              class="form-control"
+              name="deletedDate"
+              formControlName="deletedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userOrganization.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userOrganization.updatedDate" for="field_updatedDate">Updated Date</label>
+          <div class="d-flex">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="updatedDate"
+              formControlName="updatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userOrganization.organiationId" for="field_organiationId"
+            >Organiation Id</label
+          >
+          <select
+            class="form-control"
+            id="field_organiationId"
+            data-cy="organiationId"
+            name="organiationId"
+            formControlName="organiationId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                organizationOption.id === editForm.get('organiationId')!.value?.id
+                  ? editForm.get('organiationId')!.value
+                  : organizationOption
+              "
+              *ngFor="let organizationOption of organizationsSharedCollection; trackBy: trackOrganizationById"
+            >
+              {{ organizationOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userOrganization.userId" for="field_userId">User Id</label>
+          <select class="form-control" id="field_userId" data-cy="userId" name="userId" formControlName="userId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('userId')!.value?.id ? editForm.get('userId')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

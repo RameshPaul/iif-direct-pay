@@ -1,0 +1,47 @@
+{
+  "iifDirectPayApp": {
+    "patron": {
+      "home": {
+        "title": "Patrons",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Patron बनाएँ",
+        "createOrEditLabel": "Patron बनाएँ या संपादित करें",
+        "notFound": "No Patrons found"
+      },
+      "created": "एक नया Patron [identifier: {{ param }}] तैयार है",
+      "updated": "एक Patron [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Patron [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Patron [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Patron"
+      },
+      "id": "ID",
+      "isRecurring": "Is Recurring",
+      "recurringType": "Recurring Type",
+      "recurringPeriod": "Recurring Period",
+      "enableReminder": "Enable Reminder",
+      "isAutoPay": "Is Auto Pay",
+      "amountReceipientRequisite": "Amount Receipient Requisite",
+      "amountPatronPledge": "Amount Patron Pledge",
+      "amountPatronActual": "Amount Patron Actual",
+      "status": "Status",
+      "commitedStartDate": "Commited Start Date",
+      "commitedEndDate": "Commited End Date",
+      "actualStartDate": "Actual Start Date",
+      "actualEndDate": "Actual End Date",
+      "reccuringPauseDate": "Reccuring Pause Date",
+      "recurringResumeDate": "Recurring Resume Date",
+      "recurringPauseReason": "Recurring Pause Reason",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "deletedDate": "Deleted Date",
+      "patronUserId": "Patron User Id",
+      "patronUserOrgId": "Patron User Org Id",
+      "receipientId": "Receipient Id",
+      "receipientUserId": "Receipient User Id",
+      "receipientUserOrgId": "Receipient User Org Id"
+    }
+  }
+}

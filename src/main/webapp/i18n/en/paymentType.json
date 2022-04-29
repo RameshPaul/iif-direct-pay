@@ -1,0 +1,9 @@
+{
+  "iifDirectPayApp": {
+    "PaymentType": {
+      "null": "",
+      "CREDIT": "CREDIT",
+      "DEBIT": "DEBIT"
+    }
+  }
+}

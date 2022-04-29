@@ -1,0 +1,52 @@
+{
+  "iifDirectPayApp": {
+    "userAccount": {
+      "home": {
+        "title": "User Accounts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Account",
+        "createOrEditLabel": "Create or edit a User Account",
+        "notFound": "No User Accounts found"
+      },
+      "created": "A new User Account is created with identifier {{ param }}",
+      "updated": "A User Account is updated with identifier {{ param }}",
+      "deleted": "A User Account is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Account {{ id }}?"
+      },
+      "detail": {
+        "title": "User Account"
+      },
+      "id": "ID",
+      "accountType": "Account Type",
+      "upiAddress": "Upi Address",
+      "mobileNumber": "Mobile Number",
+      "upiActiveDate": "Upi Active Date",
+      "upiStatus": "Upi Status",
+      "upiSuspendedDate": "Upi Suspended Date",
+      "upiDeletedDate": "Upi Deleted Date",
+      "upiAutoDebitEnabled": "Upi Auto Debit Enabled",
+      "bankName": "Bank Name",
+      "bankAccountNumber": "Bank Account Number",
+      "bankIFSCCode": "Bank IFSC Code",
+      "bankSWIFTCode": "Bank SWIFT Code",
+      "bankBranchAddress": "Bank Branch Address",
+      "bankStatus": "Bank Status",
+      "bankActiveDate": "Bank Active Date",
+      "bankSuspendedDate": "Bank Suspended Date",
+      "bankDeletedDate": "Bank Deleted Date",
+      "bankAutoDebitEnabled": "Bank Auto Debit Enabled",
+      "walletType": "Wallet Type",
+      "walletAddress": "Wallet Address",
+      "walletStatus": "Wallet Status",
+      "wallterActiveDate": "Wallter Active Date",
+      "walletSuspendedDate": "Wallet Suspended Date",
+      "walletDeletedDate": "Wallet Deleted Date",
+      "walletAutoDebitEnabled": "Wallet Auto Debit Enabled",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "userId": "User Id",
+      "organizationId": "Organization Id"
+    }
+  }
+}

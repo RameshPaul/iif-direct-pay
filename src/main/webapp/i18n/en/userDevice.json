@@ -1,0 +1,40 @@
+{
+  "iifDirectPayApp": {
+    "userDevice": {
+      "home": {
+        "title": "User Devices",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Device",
+        "createOrEditLabel": "Create or edit a User Device",
+        "notFound": "No User Devices found"
+      },
+      "created": "A new User Device is created with identifier {{ param }}",
+      "updated": "A User Device is updated with identifier {{ param }}",
+      "deleted": "A User Device is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Device {{ id }}?"
+      },
+      "detail": {
+        "title": "User Device"
+      },
+      "id": "ID",
+      "deviceName": "Device Name",
+      "deviceId": "Device Id",
+      "deviceToken": "Device Token",
+      "deviceType": "Device Type",
+      "deviceOS": "Device OS",
+      "notificationEnabled": "Notification Enabled",
+      "lastActivityDetails": "Last Activity Details",
+      "lastActiveDate": "Last Active Date",
+      "lastActiveLocation": "Last Active Location",
+      "appVersion": "App Version",
+      "forceLogin": "Force Login",
+      "status": "Status",
+      "loginDateTime": "Login Date Time",
+      "exitDate": "Exit Date",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "userId": "User Id"
+    }
+  }
+}

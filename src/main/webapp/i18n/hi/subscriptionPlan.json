@@ -1,0 +1,33 @@
+{
+  "iifDirectPayApp": {
+    "subscriptionPlan": {
+      "home": {
+        "title": "SubscriptionPlans",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Subscription Plan बनाएँ",
+        "createOrEditLabel": "Subscription Plan बनाएँ या संपादित करें",
+        "notFound": "No Subscription Plans found"
+      },
+      "created": "एक नया Subscription Plan [identifier: {{ param }}] तैयार है",
+      "updated": "एक Subscription Plan [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Subscription Plan [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Subscription Plan [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Subscription Plan"
+      },
+      "id": "ID",
+      "subscriptionName": "Subscription Name",
+      "subscriptionTitle": "Subscription Title",
+      "subscriptionType": "Subscription Type",
+      "subscriptionPrice": "Subscription Price",
+      "subscriptionQuantity": "Subscription Quantity",
+      "subscriptionPeriod": "Subscription Period",
+      "subscriptionTerms": "Subscription Terms",
+      "status": "Status",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date"
+    }
+  }
+}

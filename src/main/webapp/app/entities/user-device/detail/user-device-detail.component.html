@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userDevice">
+      <h2 data-cy="userDeviceDetailsHeading"><span jhiTranslate="iifDirectPayApp.userDevice.detail.title">User Device</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userDevice.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.deviceName">Device Name</span></dt>
+        <dd>
+          <span>{{ userDevice.deviceName }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.deviceId">Device Id</span></dt>
+        <dd>
+          <span>{{ userDevice.deviceId }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.deviceToken">Device Token</span></dt>
+        <dd>
+          <span>{{ userDevice.deviceToken }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.deviceType">Device Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserDeviceType.' + userDevice.deviceType }}">{{ userDevice.deviceType }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.deviceOS">Device OS</span></dt>
+        <dd>
+          <span>{{ userDevice.deviceOS }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.notificationEnabled">Notification Enabled</span></dt>
+        <dd>
+          <span>{{ userDevice.notificationEnabled }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.lastActivityDetails">Last Activity Details</span></dt>
+        <dd>
+          <span>{{ userDevice.lastActivityDetails }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.lastActiveDate">Last Active Date</span></dt>
+        <dd>
+          <span>{{ userDevice.lastActiveDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.lastActiveLocation">Last Active Location</span></dt>
+        <dd>
+          <span>{{ userDevice.lastActiveLocation }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.appVersion">App Version</span></dt>
+        <dd>
+          <span>{{ userDevice.appVersion }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.forceLogin">Force Login</span></dt>
+        <dd>
+          <span>{{ userDevice.forceLogin }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.UserDeviceStatus.' + userDevice.status }}">{{ userDevice.status }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.loginDateTime">Login Date Time</span></dt>
+        <dd>
+          <span>{{ userDevice.loginDateTime | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.exitDate">Exit Date</span></dt>
+        <dd>
+          <span>{{ userDevice.exitDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ userDevice.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ userDevice.updatedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.userDevice.userId">User Id</span></dt>
+        <dd>
+          <span>{{ userDevice.userId?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-device', userDevice.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

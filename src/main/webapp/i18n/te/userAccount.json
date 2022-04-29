@@ -1,0 +1,52 @@
+{
+  "iifDirectPayApp": {
+    "userAccount": {
+      "home": {
+        "title": "User Accounts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "కొత్త User Account  సృష్టించండి",
+        "createOrEditLabel": "User Account సృష్టించండి లేదా సవరించండి",
+        "notFound": "No User Accounts found"
+      },
+      "created": "{{ param }} ఐడీ తో ఒక కొత్త User Account సృష్టించబడినది",
+      "updated": "{{ param }} ఐడీ తో ఒక కొత్త User Account సవరించబడినది",
+      "deleted": "{{ param }} ఐడీ తో ఒక కొత్త User Account తొలగించబడినది",
+      "delete": {
+        "question": "మీరు User Account {{ id }} ఖచ్చితంగా తొలగించాలనుకుంటున్నారా?"
+      },
+      "detail": {
+        "title": "User Account"
+      },
+      "id": "ID",
+      "accountType": "Account Type",
+      "upiAddress": "Upi Address",
+      "mobileNumber": "Mobile Number",
+      "upiActiveDate": "Upi Active Date",
+      "upiStatus": "Upi Status",
+      "upiSuspendedDate": "Upi Suspended Date",
+      "upiDeletedDate": "Upi Deleted Date",
+      "upiAutoDebitEnabled": "Upi Auto Debit Enabled",
+      "bankName": "Bank Name",
+      "bankAccountNumber": "Bank Account Number",
+      "bankIFSCCode": "Bank IFSC Code",
+      "bankSWIFTCode": "Bank SWIFT Code",
+      "bankBranchAddress": "Bank Branch Address",
+      "bankStatus": "Bank Status",
+      "bankActiveDate": "Bank Active Date",
+      "bankSuspendedDate": "Bank Suspended Date",
+      "bankDeletedDate": "Bank Deleted Date",
+      "bankAutoDebitEnabled": "Bank Auto Debit Enabled",
+      "walletType": "Wallet Type",
+      "walletAddress": "Wallet Address",
+      "walletStatus": "Wallet Status",
+      "wallterActiveDate": "Wallter Active Date",
+      "walletSuspendedDate": "Wallet Suspended Date",
+      "walletDeletedDate": "Wallet Deleted Date",
+      "walletAutoDebitEnabled": "Wallet Auto Debit Enabled",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "userId": "User Id",
+      "organizationId": "Organization Id"
+    }
+  }
+}

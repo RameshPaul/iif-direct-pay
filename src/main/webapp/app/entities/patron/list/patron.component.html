@@ -1,0 +1,130 @@
+<div>
+  <h2 id="page-heading" data-cy="PatronHeading">
+    <span jhiTranslate="iifDirectPayApp.patron.home.title">Patrons</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.patron.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-patron"
+        [routerLink]="['/patron/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.patron.home.createLabel"> Create a new Patron </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="patrons?.length === 0">
+    <span jhiTranslate="iifDirectPayApp.patron.home.notFound">No patrons found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="patrons && patrons.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.isRecurring">Is Recurring</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.recurringType">Recurring Type</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.recurringPeriod">Recurring Period</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.enableReminder">Enable Reminder</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.isAutoPay">Is Auto Pay</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.amountReceipientRequisite">Amount Receipient Requisite</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.amountPatronPledge">Amount Patron Pledge</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.amountPatronActual">Amount Patron Actual</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.status">Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.commitedStartDate">Commited Start Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.commitedEndDate">Commited End Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.actualStartDate">Actual Start Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.actualEndDate">Actual End Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.reccuringPauseDate">Reccuring Pause Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.recurringResumeDate">Recurring Resume Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.recurringPauseReason">Recurring Pause Reason</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.deletedDate">Deleted Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.patronUserId">Patron User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.patronUserOrgId">Patron User Org Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.receipientId">Receipient Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.receipientUserId">Receipient User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.patron.receipientUserOrgId">Receipient User Org Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patron of patrons; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/patron', patron.id, 'view']">{{ patron.id }}</a>
+          </td>
+          <td>{{ patron.isRecurring }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.ReceipientPatronRecurringType.' + patron.recurringType }}">{{ patron.recurringType }}</td>
+          <td>{{ patron.recurringPeriod | formatMediumDate }}</td>
+          <td>{{ patron.enableReminder }}</td>
+          <td>{{ patron.isAutoPay }}</td>
+          <td>{{ patron.amountReceipientRequisite }}</td>
+          <td>{{ patron.amountPatronPledge }}</td>
+          <td>{{ patron.amountPatronActual }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.ReceipientPatronStatus.' + patron.status }}">{{ patron.status }}</td>
+          <td>{{ patron.commitedStartDate | formatMediumDate }}</td>
+          <td>{{ patron.commitedEndDate | formatMediumDate }}</td>
+          <td>{{ patron.actualStartDate | formatMediumDate }}</td>
+          <td>{{ patron.actualEndDate | formatMediumDate }}</td>
+          <td>{{ patron.reccuringPauseDate | formatMediumDate }}</td>
+          <td>{{ patron.recurringResumeDate | formatMediumDate }}</td>
+          <td>{{ patron.recurringPauseReason }}</td>
+          <td>{{ patron.createdDate | formatMediumDatetime }}</td>
+          <td>{{ patron.updatedDate | formatMediumDatetime }}</td>
+          <td>{{ patron.deletedDate | formatMediumDatetime }}</td>
+          <td>
+            {{ patron.patronUserId?.id }}
+          </td>
+          <td>
+            <div *ngIf="patron.patronUserOrgId">
+              <a [routerLink]="['/organization', patron.patronUserOrgId?.id, 'view']">{{ patron.patronUserOrgId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="patron.receipientId">
+              <a [routerLink]="['/receipient', patron.receipientId?.id, 'view']">{{ patron.receipientId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ patron.receipientUserId?.id }}
+          </td>
+          <td>
+            <div *ngIf="patron.receipientUserOrgId">
+              <a [routerLink]="['/organization', patron.receipientUserOrgId?.id, 'view']">{{ patron.receipientUserOrgId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/patron', patron.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/patron', patron.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(patron)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

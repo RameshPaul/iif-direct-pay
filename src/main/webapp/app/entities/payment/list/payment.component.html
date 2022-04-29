@@ -1,0 +1,200 @@
+<div>
+  <h2 id="page-heading" data-cy="PaymentHeading">
+    <span jhiTranslate="iifDirectPayApp.payment.home.title">Payments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.payment.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-payment"
+        [routerLink]="['/payment/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.payment.home.createLabel"> Create a new Payment </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="payments?.length === 0">
+    <span jhiTranslate="iifDirectPayApp.payment.home.notFound">No payments found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="payments && payments.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.recurringPeriod">Recurring Period</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.amount">Amount</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.transactionId">Transaction Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentType">Payment Type</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentSource">Payment Source</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentStatus">Payment Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentStatusDetails">Payment Status Details</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentStartDateTime">Payment Start Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentCompleteDateTime">Payment Complete Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentFailureDateTime">Payment Failure Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.patronComment">Patron Comment</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.isAutoPay">Is Auto Pay</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentDestinationSource">Payment Destination Source</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentReceivedDateTIme">Payment Received Date T Ime</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentReceivedStatus">Payment Received Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentReceivedDetails">Payment Received Details</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentRefundedDateTime">Payment Refunded Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.userComment">User Comment</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.flaggedDateTime">Flagged Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.flagDetails">Flag Details</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.flaggedEmailId">Flagged Email Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.flaggedAmount">Flagged Amount</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.flagCreatedDateTime">Flag Created Date Time</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.isRecurringPayment">Is Recurring Payment</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.transactionDetails">Transaction Details</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.patronId">Patron Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.patronUserId">Patron User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.patronUserOrgId">Patron User Org Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.receipientId">Receipient Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.receipientUserId">Receipient User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.receipientUserOrgId">Receipient User Org Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.paymentSourceAccountId">Payment Source Account Id</span></th>
+          <th scope="col">
+            <span jhiTranslate="iifDirectPayApp.payment.paymentDestinationAccountId">Payment Destination Account Id</span>
+          </th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.flaggedUserId">Flagged User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.flaggedUserOrgId">Flagged User Org Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.flagClearedUserId">Flag Cleared User Id</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.payment.flagClearedUserOrgId">Flag Cleared User Org Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of payments; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/payment', payment.id, 'view']">{{ payment.id }}</a>
+          </td>
+          <td>{{ payment.recurringPeriod | formatMediumDate }}</td>
+          <td>{{ payment.amount }}</td>
+          <td>{{ payment.transactionId }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.PaymentType.' + payment.paymentType }}">{{ payment.paymentType }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserAccountType.' + payment.paymentSource }}">{{ payment.paymentSource }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.PaymentStatus.' + payment.paymentStatus }}">{{ payment.paymentStatus }}</td>
+          <td>{{ payment.paymentStatusDetails }}</td>
+          <td>{{ payment.paymentStartDateTime | formatMediumDate }}</td>
+          <td>{{ payment.paymentCompleteDateTime | formatMediumDate }}</td>
+          <td>{{ payment.paymentFailureDateTime | formatMediumDate }}</td>
+          <td>{{ payment.patronComment }}</td>
+          <td>{{ payment.isAutoPay }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.UserAccountType.' + payment.paymentDestinationSource }}">
+            {{ payment.paymentDestinationSource }}
+          </td>
+          <td>{{ payment.paymentReceivedDateTIme | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.PaymentStatus.' + payment.paymentReceivedStatus }}">{{ payment.paymentReceivedStatus }}</td>
+          <td>{{ payment.paymentReceivedDetails }}</td>
+          <td>{{ payment.paymentRefundedDateTime | formatMediumDate }}</td>
+          <td>{{ payment.userComment }}</td>
+          <td>{{ payment.flaggedDateTime | formatMediumDate }}</td>
+          <td>{{ payment.flagDetails }}</td>
+          <td>{{ payment.flaggedEmailId }}</td>
+          <td>{{ payment.flaggedAmount }}</td>
+          <td>{{ payment.flagCreatedDateTime | formatMediumDate }}</td>
+          <td>{{ payment.isRecurringPayment }}</td>
+          <td>{{ payment.transactionDetails }}</td>
+          <td>{{ payment.createdDate | formatMediumDatetime }}</td>
+          <td>{{ payment.updatedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="payment.patronId">
+              <a [routerLink]="['/patron', payment.patronId?.id, 'view']">{{ payment.patronId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ payment.patronUserId?.id }}
+          </td>
+          <td>
+            <div *ngIf="payment.patronUserOrgId">
+              <a [routerLink]="['/organization', payment.patronUserOrgId?.id, 'view']">{{ payment.patronUserOrgId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="payment.receipientId">
+              <a [routerLink]="['/receipient', payment.receipientId?.id, 'view']">{{ payment.receipientId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ payment.receipientUserId?.id }}
+          </td>
+          <td>
+            <div *ngIf="payment.receipientUserOrgId">
+              <a [routerLink]="['/organization', payment.receipientUserOrgId?.id, 'view']">{{ payment.receipientUserOrgId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="payment.paymentSourceAccountId">
+              <a [routerLink]="['/user-account', payment.paymentSourceAccountId?.id, 'view']">{{ payment.paymentSourceAccountId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="payment.paymentDestinationAccountId">
+              <a [routerLink]="['/user-account', payment.paymentDestinationAccountId?.id, 'view']">{{
+                payment.paymentDestinationAccountId?.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            {{ payment.flaggedUserId?.id }}
+          </td>
+          <td>
+            <div *ngIf="payment.flaggedUserOrgId">
+              <a [routerLink]="['/organization', payment.flaggedUserOrgId?.id, 'view']">{{ payment.flaggedUserOrgId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ payment.flagClearedUserId?.id }}
+          </td>
+          <td>
+            <div *ngIf="payment.flagClearedUserOrgId">
+              <a [routerLink]="['/organization', payment.flagClearedUserOrgId?.id, 'view']">{{ payment.flagClearedUserOrgId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/payment', payment.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/payment', payment.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(payment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

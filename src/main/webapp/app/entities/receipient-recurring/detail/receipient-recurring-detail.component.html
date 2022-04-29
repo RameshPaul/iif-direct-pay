@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="receipientRecurring">
+      <h2 data-cy="receipientRecurringDetailsHeading">
+        <span jhiTranslate="iifDirectPayApp.receipientRecurring.detail.title">Receipient Recurring</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.recurringPeriod">Recurring Period</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.recurringPeriod }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.startDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.endDate">End Date</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.endDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.amountRequisite">Amount Requisite</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.amountRequisite }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.amountPatronCommited">Amount Patron Commited</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.amountPatronCommited }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.amountReceived">Amount Received</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.amountReceived }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.amountBalance">Amount Balance</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.amountBalance }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.totalPatrons">Total Patrons</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.totalPatrons }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.detailsText">Details Text</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.detailsText }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.status">Status</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'iifDirectPayApp.ReceipientRecurringStatus.' + receipientRecurring.status }}">{{
+            receipientRecurring.status
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.pauseDate">Pause Date</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.pauseDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.resumeDate">Resume Date</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.resumeDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.createdDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.updatedDate">Updated Date</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.updatedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.receipientId">Receipient Id</span></dt>
+        <dd>
+          <div *ngIf="receipientRecurring.receipientId">
+            <a [routerLink]="['/receipient', receipientRecurring.receipientId?.id, 'view']">{{ receipientRecurring.receipientId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="iifDirectPayApp.receipientRecurring.userId">User Id</span></dt>
+        <dd>
+          <span>{{ receipientRecurring.userId?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/receipient-recurring', receipientRecurring.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
