@@ -1,0 +1,134 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429145940",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "organization",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "aliasName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "website",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mobile",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "representativeName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "representativeEmail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "representativePhone",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "registrationNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "organizationType",
+      "fieldType": "OrganizationType",
+      "fieldValues": "NON_PROFIT,SOCIETY,RELIGIOUS,MISSIONS,OTHER"
+    },
+    {
+      "fieldName": "organizationTypeOther",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "organizationTaxCategory",
+      "fieldType": "OrganizationTaxCategory",
+      "fieldValues": "NO_TAX_EXEMPTION,E80G,PRIVATE,RELIGIOUS,OTHER"
+    },
+    {
+      "fieldName": "organizationTaxCategoryOther",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "establishedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "totalEmployeesNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "joinDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "subscriptionStartDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "subscriptionEndDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "OrganizationStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "INACTIVE,ACTIVE,SUSPENDED,DELETED"
+    },
+    {
+      "fieldName": "isVerified",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "activatedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "deletedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "suspendedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Organization",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "subscriptionPlan",
+      "otherEntityRelationshipName": "organization",
+      "relationshipName": "subscriptionId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

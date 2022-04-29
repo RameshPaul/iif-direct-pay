@@ -1,0 +1,143 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429145945",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "user_account",
+  "fields": [
+    {
+      "fieldName": "accountType",
+      "fieldType": "UserAccountType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "UPI,BANK,WALLET"
+    },
+    {
+      "fieldName": "upiAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mobileNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "upiActiveDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "upiStatus",
+      "fieldType": "UserAccountUpiStatus",
+      "fieldValues": "INACTIVE,ACTIVE,SUSPENDED,DELETED"
+    },
+    {
+      "fieldName": "upiSuspendedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "upiDeletedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "upiAutoDebitEnabled",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "bankName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bankAccountNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "bankIFSCCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bankSWIFTCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bankBranchAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bankStatus",
+      "fieldType": "UserAccountBankStatus",
+      "fieldValues": "INACTIVE,ACTIVE,SUSPENDED,DELETED"
+    },
+    {
+      "fieldName": "bankActiveDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "bankSuspendedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "bankDeletedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "bankAutoDebitEnabled",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "walletType",
+      "fieldType": "UserAccountWalletType",
+      "fieldValues": "PAYTM,GPAY,PHONEPAY,AMAZONPAY"
+    },
+    {
+      "fieldName": "walletAddress",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "walletStatus",
+      "fieldType": "UserAccountWalletStatus",
+      "fieldValues": "INACTIVE,ACTIVE,SUSPENDED,DELETED"
+    },
+    {
+      "fieldName": "wallterActiveDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "walletSuspendedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "walletDeletedDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "walletAutoDebitEnabled",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "UserAccount",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userAccount",
+      "relationshipName": "userId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "organization",
+      "otherEntityRelationshipName": "userAccount",
+      "relationshipName": "organizationId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

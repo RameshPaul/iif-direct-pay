@@ -1,0 +1,86 @@
+{
+  "applications": "*",
+  "changelogDate": "20220429145947",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "receipient_recurring",
+  "fields": [
+    {
+      "fieldName": "recurringPeriod",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "amountRequisite",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "amountPatronCommited",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "amountReceived",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "amountBalance",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "totalPatrons",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "detailsText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ReceipientRecurringStatus",
+      "fieldValues": "UNDER_FUNDED,FULLY_FUNDED,OVER_FUNDED"
+    },
+    {
+      "fieldName": "pauseDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "resumeDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ReceipientRecurring",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "receipient",
+      "otherEntityRelationshipName": "receipientRecurring",
+      "relationshipName": "receipientId",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "receipientRecurring",
+      "relationshipName": "userId",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
