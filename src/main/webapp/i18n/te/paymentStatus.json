@@ -1,0 +1,11 @@
+{
+  "iifDirectPayApp": {
+    "PaymentStatus": {
+      "null": "",
+      "INITIATED": "INITIATED",
+      "PENDING": "PENDING",
+      "COMPLETED": "COMPLETED",
+      "FAILED": "FAILED"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "iifDirectPayApp": {
+    "receipientRecurring": {
+      "home": {
+        "title": "Receipient Recurrings",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Receipient Recurring-ஐ உருவாக்கு",
+        "createOrEditLabel": "Receipient Recurring -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No Receipient Recurrings found"
+      },
+      "created": "Receipient Recurring புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "Receipient Recurring மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A Receipient Recurring நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் Receipient Recurring {{ id }}?"
+      },
+      "detail": {
+        "title": "Receipient Recurring"
+      },
+      "id": "ID",
+      "recurringPeriod": "Recurring Period",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "amountRequisite": "Amount Requisite",
+      "amountPatronCommited": "Amount Patron Commited",
+      "amountReceived": "Amount Received",
+      "amountBalance": "Amount Balance",
+      "totalPatrons": "Total Patrons",
+      "detailsText": "Details Text",
+      "status": "Status",
+      "pauseDate": "Pause Date",
+      "resumeDate": "Resume Date",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "receipientId": "Receipient Id",
+      "userId": "User Id"
+    }
+  }
+}

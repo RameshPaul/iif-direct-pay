@@ -1,0 +1,11 @@
+{
+  "iifDirectPayApp": {
+    "SubscriptionType": {
+      "null": "",
+      "FREE": "FREE",
+      "PAID": "PAID",
+      "PROMOTION": "PROMOTION",
+      "OTHER": "OTHER"
+    }
+  }
+}

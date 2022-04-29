@@ -1,0 +1,52 @@
+{
+  "iifDirectPayApp": {
+    "userAccount": {
+      "home": {
+        "title": "User Accounts",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "User Account-ஐ உருவாக்கு",
+        "createOrEditLabel": "User Account -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No User Accounts found"
+      },
+      "created": "User Account புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "User Account மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A User Account நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் User Account {{ id }}?"
+      },
+      "detail": {
+        "title": "User Account"
+      },
+      "id": "ID",
+      "accountType": "Account Type",
+      "upiAddress": "Upi Address",
+      "mobileNumber": "Mobile Number",
+      "upiActiveDate": "Upi Active Date",
+      "upiStatus": "Upi Status",
+      "upiSuspendedDate": "Upi Suspended Date",
+      "upiDeletedDate": "Upi Deleted Date",
+      "upiAutoDebitEnabled": "Upi Auto Debit Enabled",
+      "bankName": "Bank Name",
+      "bankAccountNumber": "Bank Account Number",
+      "bankIFSCCode": "Bank IFSC Code",
+      "bankSWIFTCode": "Bank SWIFT Code",
+      "bankBranchAddress": "Bank Branch Address",
+      "bankStatus": "Bank Status",
+      "bankActiveDate": "Bank Active Date",
+      "bankSuspendedDate": "Bank Suspended Date",
+      "bankDeletedDate": "Bank Deleted Date",
+      "bankAutoDebitEnabled": "Bank Auto Debit Enabled",
+      "walletType": "Wallet Type",
+      "walletAddress": "Wallet Address",
+      "walletStatus": "Wallet Status",
+      "wallterActiveDate": "Wallter Active Date",
+      "walletSuspendedDate": "Wallet Suspended Date",
+      "walletDeletedDate": "Wallet Deleted Date",
+      "walletAutoDebitEnabled": "Wallet Auto Debit Enabled",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "userId": "User Id",
+      "organizationId": "Organization Id"
+    }
+  }
+}

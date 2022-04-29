@@ -1,0 +1,140 @@
+<div>
+  <h2 id="page-heading" data-cy="OrganizationHeading">
+    <span jhiTranslate="iifDirectPayApp.organization.home.title">Organizations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.organization.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-organization"
+        [routerLink]="['/organization/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="iifDirectPayApp.organization.home.createLabel"> Create a new Organization </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="organizations?.length === 0">
+    <span jhiTranslate="iifDirectPayApp.organization.home.notFound">No organizations found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="organizations && organizations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.aliasName">Alias Name</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.email">Email</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.website">Website</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.phone">Phone</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.mobile">Mobile</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.representativeName">Representative Name</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.representativeEmail">Representative Email</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.representativePhone">Representative Phone</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.registrationNumber">Registration Number</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.organizationType">Organization Type</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.organizationTypeOther">Organization Type Other</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.organizationTaxCategory">Organization Tax Category</span></th>
+          <th scope="col">
+            <span jhiTranslate="iifDirectPayApp.organization.organizationTaxCategoryOther">Organization Tax Category Other</span>
+          </th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.establishedDate">Established Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.totalEmployeesNumber">Total Employees Number</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.joinDate">Join Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.subscriptionStartDate">Subscription Start Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.subscriptionEndDate">Subscription End Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.status">Status</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.isVerified">Is Verified</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.activatedDate">Activated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.updatedDate">Updated Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.deletedDate">Deleted Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.suspendedDate">Suspended Date</span></th>
+          <th scope="col"><span jhiTranslate="iifDirectPayApp.organization.subscriptionId">Subscription Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let organization of organizations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/organization', organization.id, 'view']">{{ organization.id }}</a>
+          </td>
+          <td>{{ organization.name }}</td>
+          <td>{{ organization.aliasName }}</td>
+          <td>{{ organization.email }}</td>
+          <td>{{ organization.website }}</td>
+          <td>{{ organization.phone }}</td>
+          <td>{{ organization.mobile }}</td>
+          <td>{{ organization.representativeName }}</td>
+          <td>{{ organization.representativeEmail }}</td>
+          <td>{{ organization.representativePhone }}</td>
+          <td>{{ organization.registrationNumber }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.OrganizationType.' + organization.organizationType }}">
+            {{ organization.organizationType }}
+          </td>
+          <td>{{ organization.organizationTypeOther }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.OrganizationTaxCategory.' + organization.organizationTaxCategory }}">
+            {{ organization.organizationTaxCategory }}
+          </td>
+          <td>{{ organization.organizationTaxCategoryOther }}</td>
+          <td>{{ organization.establishedDate | formatMediumDate }}</td>
+          <td>{{ organization.totalEmployeesNumber }}</td>
+          <td>{{ organization.joinDate | formatMediumDatetime }}</td>
+          <td>{{ organization.subscriptionStartDate | formatMediumDate }}</td>
+          <td>{{ organization.subscriptionEndDate | formatMediumDate }}</td>
+          <td jhiTranslate="{{ 'iifDirectPayApp.OrganizationStatus.' + organization.status }}">{{ organization.status }}</td>
+          <td>{{ organization.isVerified }}</td>
+          <td>{{ organization.activatedDate | formatMediumDatetime }}</td>
+          <td>{{ organization.createdDate | formatMediumDatetime }}</td>
+          <td>{{ organization.updatedDate | formatMediumDatetime }}</td>
+          <td>{{ organization.deletedDate | formatMediumDatetime }}</td>
+          <td>{{ organization.suspendedDate | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="organization.subscriptionId">
+              <a [routerLink]="['/subscription-plan', organization.subscriptionId?.id, 'view']">{{ organization.subscriptionId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/organization', organization.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/organization', organization.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(organization)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "iifDirectPayApp": {
+    "userOrganization": {
+      "home": {
+        "title": "User Organizations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "User Organization-ஐ உருவாக்கு",
+        "createOrEditLabel": "User Organization -ஐ மாற்று (அ) உருவாக்கு",
+        "notFound": "No User Organizations found"
+      },
+      "created": "User Organization புதிதாக உருவாக்கப்பட்டது, அடையாளம் {{ param }}",
+      "updated": "User Organization மாற்றப்பட்டது, அடையாளம்  {{ param }}",
+      "deleted": "A User Organization நீக்கப்பட்டது, அடையாளம {{ param }}",
+      "delete": {
+        "question": "நீக்குவதற்கு உறுதி செய் User Organization {{ id }}?"
+      },
+      "detail": {
+        "title": "User Organization"
+      },
+      "id": "ID",
+      "joiningDate": "Joining Date",
+      "exitDate": "Exit Date",
+      "status": "Status",
+      "suspendedDate": "Suspended Date",
+      "deletedDate": "Deleted Date",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "organiationId": "Organiation Id",
+      "userId": "User Id"
+    }
+  }
+}

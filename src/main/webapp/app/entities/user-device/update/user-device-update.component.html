@@ -1,0 +1,363 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-user-device-heading"
+        data-cy="UserDeviceCreateUpdateHeading"
+        jhiTranslate="iifDirectPayApp.userDevice.home.createOrEditLabel"
+      >
+        Create or edit a User Device
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.deviceName" for="field_deviceName">Device Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="deviceName"
+            id="field_deviceName"
+            data-cy="deviceName"
+            formControlName="deviceName"
+          />
+          <div *ngIf="editForm.get('deviceName')!.invalid && (editForm.get('deviceName')!.dirty || editForm.get('deviceName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('deviceName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.deviceId" for="field_deviceId">Device Id</label>
+          <input type="text" class="form-control" name="deviceId" id="field_deviceId" data-cy="deviceId" formControlName="deviceId" />
+          <div *ngIf="editForm.get('deviceId')!.invalid && (editForm.get('deviceId')!.dirty || editForm.get('deviceId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('deviceId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.deviceToken" for="field_deviceToken">Device Token</label>
+          <input
+            type="text"
+            class="form-control"
+            name="deviceToken"
+            id="field_deviceToken"
+            data-cy="deviceToken"
+            formControlName="deviceToken"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.deviceType" for="field_deviceType">Device Type</label>
+          <select class="form-control" name="deviceType" formControlName="deviceType" id="field_deviceType" data-cy="deviceType">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserDeviceType.null' | translate }}</option>
+            <option *ngFor="let userDeviceType of userDeviceTypeValues" [value]="userDeviceType">
+              {{ 'iifDirectPayApp.UserDeviceType.' + userDeviceType | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('deviceType')!.invalid && (editForm.get('deviceType')!.dirty || editForm.get('deviceType')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('deviceType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.deviceOS" for="field_deviceOS">Device OS</label>
+          <input type="text" class="form-control" name="deviceOS" id="field_deviceOS" data-cy="deviceOS" formControlName="deviceOS" />
+          <div *ngIf="editForm.get('deviceOS')!.invalid && (editForm.get('deviceOS')!.dirty || editForm.get('deviceOS')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('deviceOS')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.notificationEnabled" for="field_notificationEnabled"
+            >Notification Enabled</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="notificationEnabled"
+            id="field_notificationEnabled"
+            data-cy="notificationEnabled"
+            formControlName="notificationEnabled"
+          />
+          <div
+            *ngIf="
+              editForm.get('notificationEnabled')!.invalid &&
+              (editForm.get('notificationEnabled')!.dirty || editForm.get('notificationEnabled')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('notificationEnabled')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.lastActivityDetails" for="field_lastActivityDetails"
+            >Last Activity Details</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastActivityDetails"
+            id="field_lastActivityDetails"
+            data-cy="lastActivityDetails"
+            formControlName="lastActivityDetails"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastActivityDetails')!.invalid &&
+              (editForm.get('lastActivityDetails')!.dirty || editForm.get('lastActivityDetails')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastActivityDetails')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.lastActiveDate" for="field_lastActiveDate"
+            >Last Active Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_lastActiveDate"
+              data-cy="lastActiveDate"
+              type="text"
+              class="form-control"
+              name="lastActiveDate"
+              ngbDatepicker
+              #lastActiveDateDp="ngbDatepicker"
+              formControlName="lastActiveDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="lastActiveDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+          <div
+            *ngIf="
+              editForm.get('lastActiveDate')!.invalid && (editForm.get('lastActiveDate')!.dirty || editForm.get('lastActiveDate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastActiveDate')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.lastActiveLocation" for="field_lastActiveLocation"
+            >Last Active Location</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="lastActiveLocation"
+            id="field_lastActiveLocation"
+            data-cy="lastActiveLocation"
+            formControlName="lastActiveLocation"
+          />
+          <div
+            *ngIf="
+              editForm.get('lastActiveLocation')!.invalid &&
+              (editForm.get('lastActiveLocation')!.dirty || editForm.get('lastActiveLocation')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lastActiveLocation')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.appVersion" for="field_appVersion">App Version</label>
+          <input
+            type="text"
+            class="form-control"
+            name="appVersion"
+            id="field_appVersion"
+            data-cy="appVersion"
+            formControlName="appVersion"
+          />
+          <div *ngIf="editForm.get('appVersion')!.invalid && (editForm.get('appVersion')!.dirty || editForm.get('appVersion')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('appVersion')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.forceLogin" for="field_forceLogin">Force Login</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="forceLogin"
+            id="field_forceLogin"
+            data-cy="forceLogin"
+            formControlName="forceLogin"
+          />
+          <div *ngIf="editForm.get('forceLogin')!.invalid && (editForm.get('forceLogin')!.dirty || editForm.get('forceLogin')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('forceLogin')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.UserDeviceStatus.null' | translate }}</option>
+            <option *ngFor="let userDeviceStatus of userDeviceStatusValues" [value]="userDeviceStatus">
+              {{ 'iifDirectPayApp.UserDeviceStatus.' + userDeviceStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.loginDateTime" for="field_loginDateTime"
+            >Login Date Time</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_loginDateTime"
+              data-cy="loginDateTime"
+              type="datetime-local"
+              class="form-control"
+              name="loginDateTime"
+              formControlName="loginDateTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.exitDate" for="field_exitDate">Exit Date</label>
+          <div class="d-flex">
+            <input
+              id="field_exitDate"
+              data-cy="exitDate"
+              type="datetime-local"
+              class="form-control"
+              name="exitDate"
+              formControlName="exitDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.updatedDate" for="field_updatedDate">Updated Date</label>
+          <div class="d-flex">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="updatedDate"
+              formControlName="updatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.userDevice.userId" for="field_userId">User Id</label>
+          <select class="form-control" id="field_userId" data-cy="userId" name="userId" formControlName="userId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('userId')!.value?.id ? editForm.get('userId')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

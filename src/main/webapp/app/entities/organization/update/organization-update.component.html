@@ -1,0 +1,432 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-organization-heading"
+        data-cy="OrganizationCreateUpdateHeading"
+        jhiTranslate="iifDirectPayApp.organization.home.createOrEditLabel"
+      >
+        Create or edit a Organization
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.aliasName" for="field_aliasName">Alias Name</label>
+          <input type="text" class="form-control" name="aliasName" id="field_aliasName" data-cy="aliasName" formControlName="aliasName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+          <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.website" for="field_website">Website</label>
+          <input type="text" class="form-control" name="website" id="field_website" data-cy="website" formControlName="website" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.phone" for="field_phone">Phone</label>
+          <input type="number" class="form-control" name="phone" id="field_phone" data-cy="phone" formControlName="phone" />
+          <div *ngIf="editForm.get('phone')!.invalid && (editForm.get('phone')!.dirty || editForm.get('phone')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('phone')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('phone')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.mobile" for="field_mobile">Mobile</label>
+          <input type="number" class="form-control" name="mobile" id="field_mobile" data-cy="mobile" formControlName="mobile" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.representativeName" for="field_representativeName"
+            >Representative Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="representativeName"
+            id="field_representativeName"
+            data-cy="representativeName"
+            formControlName="representativeName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.representativeEmail" for="field_representativeEmail"
+            >Representative Email</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="representativeEmail"
+            id="field_representativeEmail"
+            data-cy="representativeEmail"
+            formControlName="representativeEmail"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.representativePhone" for="field_representativePhone"
+            >Representative Phone</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="representativePhone"
+            id="field_representativePhone"
+            data-cy="representativePhone"
+            formControlName="representativePhone"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.registrationNumber" for="field_registrationNumber"
+            >Registration Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="registrationNumber"
+            id="field_registrationNumber"
+            data-cy="registrationNumber"
+            formControlName="registrationNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.organizationType" for="field_organizationType"
+            >Organization Type</label
+          >
+          <select
+            class="form-control"
+            name="organizationType"
+            formControlName="organizationType"
+            id="field_organizationType"
+            data-cy="organizationType"
+          >
+            <option [ngValue]="null">{{ 'iifDirectPayApp.OrganizationType.null' | translate }}</option>
+            <option *ngFor="let organizationType of organizationTypeValues" [value]="organizationType">
+              {{ 'iifDirectPayApp.OrganizationType.' + organizationType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.organizationTypeOther" for="field_organizationTypeOther"
+            >Organization Type Other</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="organizationTypeOther"
+            id="field_organizationTypeOther"
+            data-cy="organizationTypeOther"
+            formControlName="organizationTypeOther"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.organizationTaxCategory" for="field_organizationTaxCategory"
+            >Organization Tax Category</label
+          >
+          <select
+            class="form-control"
+            name="organizationTaxCategory"
+            formControlName="organizationTaxCategory"
+            id="field_organizationTaxCategory"
+            data-cy="organizationTaxCategory"
+          >
+            <option [ngValue]="null">{{ 'iifDirectPayApp.OrganizationTaxCategory.null' | translate }}</option>
+            <option *ngFor="let organizationTaxCategory of organizationTaxCategoryValues" [value]="organizationTaxCategory">
+              {{ 'iifDirectPayApp.OrganizationTaxCategory.' + organizationTaxCategory | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="iifDirectPayApp.organization.organizationTaxCategoryOther"
+            for="field_organizationTaxCategoryOther"
+            >Organization Tax Category Other</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="organizationTaxCategoryOther"
+            id="field_organizationTaxCategoryOther"
+            data-cy="organizationTaxCategoryOther"
+            formControlName="organizationTaxCategoryOther"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.establishedDate" for="field_establishedDate"
+            >Established Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_establishedDate"
+              data-cy="establishedDate"
+              type="text"
+              class="form-control"
+              name="establishedDate"
+              ngbDatepicker
+              #establishedDateDp="ngbDatepicker"
+              formControlName="establishedDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="establishedDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.totalEmployeesNumber" for="field_totalEmployeesNumber"
+            >Total Employees Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalEmployeesNumber"
+            id="field_totalEmployeesNumber"
+            data-cy="totalEmployeesNumber"
+            formControlName="totalEmployeesNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.joinDate" for="field_joinDate">Join Date</label>
+          <div class="d-flex">
+            <input
+              id="field_joinDate"
+              data-cy="joinDate"
+              type="datetime-local"
+              class="form-control"
+              name="joinDate"
+              formControlName="joinDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.subscriptionStartDate" for="field_subscriptionStartDate"
+            >Subscription Start Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_subscriptionStartDate"
+              data-cy="subscriptionStartDate"
+              type="text"
+              class="form-control"
+              name="subscriptionStartDate"
+              ngbDatepicker
+              #subscriptionStartDateDp="ngbDatepicker"
+              formControlName="subscriptionStartDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="subscriptionStartDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.subscriptionEndDate" for="field_subscriptionEndDate"
+            >Subscription End Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_subscriptionEndDate"
+              data-cy="subscriptionEndDate"
+              type="text"
+              class="form-control"
+              name="subscriptionEndDate"
+              ngbDatepicker
+              #subscriptionEndDateDp="ngbDatepicker"
+              formControlName="subscriptionEndDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="subscriptionEndDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'iifDirectPayApp.OrganizationStatus.null' | translate }}</option>
+            <option *ngFor="let organizationStatus of organizationStatusValues" [value]="organizationStatus">
+              {{ 'iifDirectPayApp.OrganizationStatus.' + organizationStatus | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('status')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.isVerified" for="field_isVerified">Is Verified</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="isVerified"
+            id="field_isVerified"
+            data-cy="isVerified"
+            formControlName="isVerified"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.activatedDate" for="field_activatedDate"
+            >Activated Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_activatedDate"
+              data-cy="activatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="activatedDate"
+              formControlName="activatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.createdDate" for="field_createdDate">Created Date</label>
+          <div class="d-flex">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="datetime-local"
+              class="form-control"
+              name="createdDate"
+              formControlName="createdDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.updatedDate" for="field_updatedDate">Updated Date</label>
+          <div class="d-flex">
+            <input
+              id="field_updatedDate"
+              data-cy="updatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="updatedDate"
+              formControlName="updatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.deletedDate" for="field_deletedDate">Deleted Date</label>
+          <div class="d-flex">
+            <input
+              id="field_deletedDate"
+              data-cy="deletedDate"
+              type="datetime-local"
+              class="form-control"
+              name="deletedDate"
+              formControlName="deletedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.suspendedDate" for="field_suspendedDate"
+            >Suspended Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_suspendedDate"
+              data-cy="suspendedDate"
+              type="datetime-local"
+              class="form-control"
+              name="suspendedDate"
+              formControlName="suspendedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="iifDirectPayApp.organization.subscriptionId" for="field_subscriptionId"
+            >Subscription Id</label
+          >
+          <select
+            class="form-control"
+            id="field_subscriptionId"
+            data-cy="subscriptionId"
+            name="subscriptionId"
+            formControlName="subscriptionId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                subscriptionPlanOption.id === editForm.get('subscriptionId')!.value?.id
+                  ? editForm.get('subscriptionId')!.value
+                  : subscriptionPlanOption
+              "
+              *ngFor="let subscriptionPlanOption of subscriptionPlansSharedCollection; trackBy: trackSubscriptionPlanById"
+            >
+              {{ subscriptionPlanOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

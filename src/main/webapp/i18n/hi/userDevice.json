@@ -1,0 +1,40 @@
+{
+  "iifDirectPayApp": {
+    "userDevice": {
+      "home": {
+        "title": "UserDevices",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया User Device बनाएँ",
+        "createOrEditLabel": "User Device बनाएँ या संपादित करें",
+        "notFound": "No User Devices found"
+      },
+      "created": "एक नया User Device [identifier: {{ param }}] तैयार है",
+      "updated": "एक User Device [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "User Device [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "User Device [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "User Device"
+      },
+      "id": "ID",
+      "deviceName": "Device Name",
+      "deviceId": "Device Id",
+      "deviceToken": "Device Token",
+      "deviceType": "Device Type",
+      "deviceOS": "Device OS",
+      "notificationEnabled": "Notification Enabled",
+      "lastActivityDetails": "Last Activity Details",
+      "lastActiveDate": "Last Active Date",
+      "lastActiveLocation": "Last Active Location",
+      "appVersion": "App Version",
+      "forceLogin": "Force Login",
+      "status": "Status",
+      "loginDateTime": "Login Date Time",
+      "exitDate": "Exit Date",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "userId": "User Id"
+    }
+  }
+}

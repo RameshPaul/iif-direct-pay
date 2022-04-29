@@ -1,0 +1,53 @@
+{
+  "iifDirectPayApp": {
+    "receipient": {
+      "home": {
+        "title": "Receipients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "नया Receipient बनाएँ",
+        "createOrEditLabel": "Receipient बनाएँ या संपादित करें",
+        "notFound": "No Receipients found"
+      },
+      "created": "एक नया Receipient [identifier: {{ param }}] तैयार है",
+      "updated": "एक Receipient [identifier: {{ param }}] का अद्यतन हुआ है",
+      "deleted": "Receipient [identifier: {{ param }}] हटा दिया है",
+      "delete": {
+        "question": "Receipient [id: {{ id }}] हटाने की पुष्टि करें"
+      },
+      "detail": {
+        "title": "Receipient"
+      },
+      "id": "ID",
+      "isRecurring": "Is Recurring",
+      "recurringType": "Recurring Type",
+      "recurringStartDate": "Recurring Start Date",
+      "recurringEndDate": "Recurring End Date",
+      "enableReminder": "Enable Reminder",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "isAutoPay": "Is Auto Pay",
+      "amountRequisite": "Amount Requisite",
+      "status": "Status",
+      "isManagedByOrg": "Is Managed By Org",
+      "approvedDateTime": "Approved Date Time",
+      "rejectedDateTime": "Rejected Date Time",
+      "rejectReason": "Reject Reason",
+      "onboardedDate": "Onboarded Date",
+      "reccuringPauseDate": "Reccuring Pause Date",
+      "recurringResumeDate": "Recurring Resume Date",
+      "recurringPauseReason": "Recurring Pause Reason",
+      "createdDate": "Created Date",
+      "updatedDate": "Updated Date",
+      "deletedDate": "Deleted Date",
+      "userId": "User Id",
+      "organizationId": "Organization Id",
+      "managedOrganiztionId": "Managed Organiztion Id",
+      "createdUserId": "Created User Id",
+      "createdUserOrgId": "Created User Org Id",
+      "approvedUserId": "Approved User Id",
+      "approvedUserOrgId": "Approved User Org Id",
+      "rejectedUserId": "Rejected User Id",
+      "rejectedUserOrgId": "Rejected User Org Id"
+    }
+  }
+}
